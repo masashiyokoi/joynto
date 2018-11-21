@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @timeline.type %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @timeline.content %>
+</p>
+
+<%= link_to 'Edit', edit_timeline_path(@timeline) %> |
+<%= link_to 'Back', timelines_path %>
