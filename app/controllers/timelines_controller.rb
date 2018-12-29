@@ -1,5 +1,5 @@
 class TimelinesController < ApplicationController
-  before_action :set_timeline, only: [:show, :edit, :update, :destroy]
+  before_action :set_timeline, only: [:show, :edit, :update, :destroy, :like, :unvote]
 
   # GET /timelines
   # GET /timelines.json
@@ -59,6 +59,16 @@ class TimelinesController < ApplicationController
       format.html { redirect_to timelines_url, notice: 'Timeline was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def like
+    @timeline.liked_by current_user
+    redirect_to @timeline, notice: "You liked this!"
+  end
+
+  def unvote
+    @timeline.disliked_by current_user
+    redirect_to @timeline, notice: "You disliked this!"
   end
 
   private

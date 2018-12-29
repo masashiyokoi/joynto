@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   get 'users/index'
   get 'users/show'
-  resources :timelines
+  resources :timelines do
+    member do
+      put 'like'    => 'timelines#like'
+      put 'unvote'  => 'timelines#unvote'
+    end
+  end
   resources :users
   root 'pages#index'
   get 'pages/index'

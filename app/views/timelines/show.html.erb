@@ -10,5 +10,13 @@
   <%= @timeline.content %>
 </p>
 
+<p>
+  <% @timeline.votes_for.up.by_type(User).voters.each do |voter| %>
+  <p><%= voter.profile %></p>
+  <% end %>
+</p>
+
+<%= link_to 'Like', like_timeline_path(@timeline), method: :put %>
+<%= link_to 'unvote', unvote_timeline_path(@timeline), method: :put %>
 <%= link_to 'Edit', edit_timeline_path(@timeline) %> |
 <%= link_to 'Back', timelines_path %>
