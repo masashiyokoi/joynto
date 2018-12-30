@@ -63,6 +63,7 @@ class TimelinesController < ApplicationController
 
   def like
     @timeline.liked_by current_user
+    NotificationMailer.send_confirm_to_user(current_user, current_user).deliver
     redirect_to @timeline, notice: "You liked this!"
   end
 
