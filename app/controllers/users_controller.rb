@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :follow, :stop_following]
 
   def index
     @users = User.all
@@ -56,6 +56,17 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def follow
+    current_user.follow @user
+    NotificationMailer.send_follow_message_to_user(@user, current_user).deliver
+    redirect_to @user, notice: "You follow user"
+  end
+
+  def stop_following
+    current_user.stop_following @user
+    redirect_to @user, notice: "You stop_following this!"
   end
 
   private

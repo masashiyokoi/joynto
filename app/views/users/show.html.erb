@@ -5,5 +5,14 @@
   <%= @user.profile %>
 </p>
 
+<p>
+  <strong>Followersoh:</strong>
+  <% @user.followers.each do |user| %>
+  <p><%= link_to user.profile, user_path(user) %></p>
+  <% end %>
+</p>
+
+<%= link_to 'follow', follow_user_path(@user), method: :put %>
+<%= link_to 'stop_following', stop_following_user_path(@user), method: :put %>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

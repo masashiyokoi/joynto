@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/tcocca/acts_as_follower.git
+  revision: c5ac7b9601c4af01eb4d9112330b27be4d694ecc
+  branch: master
+  specs:
+    acts_as_follower (0.2.1)
+      activerecord (>= 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -126,7 +134,7 @@ GEM
     pry-doc (1.0.0)
       pry (~> 0.11)
       yard (~> 0.9.11)
-    pry-rails (0.3.8)
+    pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (3.0.3)
     puma (3.12.0)
@@ -221,6 +229,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_follower!
   acts_as_votable
   bootsnap (>= 1.1.0)
   byebug

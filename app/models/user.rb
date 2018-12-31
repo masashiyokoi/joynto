@@ -6,5 +6,7 @@ class User < ApplicationRecord
          :confirmable, :lockable, :timeoutable
 
   acts_as_voter
+  acts_as_followable
+  acts_as_follower
 
 end
