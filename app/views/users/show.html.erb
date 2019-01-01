@@ -6,9 +6,16 @@
 </p>
 
 <p>
-  <strong>Followersoh:</strong>
+  <strong>Follower:</strong>
   <% @user.followers.each do |user| %>
   <p><%= link_to user.name, user_path(user) %></p>
+  <% end %>
+</p>
+
+<p>
+  <strong>Timelines:</strong>
+  <% @user.timelines.each do |timeline| %>
+  <p><%= link_to timeline.content, timeline_path(timeline) %></p>
   <% end %>
 </p>
 

@@ -5,10 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable
 
+  has_many :timelines
+
+  validates :name, presence: true
+
   acts_as_voter
   acts_as_followable
   acts_as_follower
-
-  validates :name, presence: true
 
 end
