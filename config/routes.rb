@@ -14,8 +14,8 @@ Rails.application.routes.draw do
       put 'stop_following'  => 'users#stop_following'
     end
   end
-  root 'pages#index'
-  get 'pages/index'
-  get 'pages/show'
+  root 'timelines#index'
+  get 'mypages/index'
+  get 'mypages/show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
