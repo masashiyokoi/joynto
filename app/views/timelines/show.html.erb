@@ -12,7 +12,7 @@
 
 <p>
   <% @timeline.votes_for.up.by_type(User).voters.each do |voter| %>
-  <p><%= link_to voter.profile, user_path(voter) %></p>
+  <p><%= link_to voter.name, user_path(voter) %></p>
   <% end %>
 </p>
 

@@ -16,7 +16,7 @@ class NotificationMailer < ApplicationMailer
     @to_user = to_user
     @from_user = from_user
     mail(
-      subject: "#{@from_user.profile}さんから、フォローされました。",
+      subject: "#{@from_user.name}さんから、フォローされました。",
       to: @to_user.email
     ) do |format|
       format.text

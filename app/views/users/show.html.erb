@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Profile:</strong>
-  <%= @user.profile %>
+  <strong>Name:</strong>
+  <%= @user.name %>
 </p>
 
 <p>
   <strong>Followersoh:</strong>
   <% @user.followers.each do |user| %>
-  <p><%= link_to user.profile, user_path(user) %></p>
+  <p><%= link_to user.name, user_path(user) %></p>
   <% end %>
 </p>
 
