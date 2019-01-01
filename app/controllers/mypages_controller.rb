@@ -5,6 +5,7 @@ class MypagesController < ApplicationController
   end
 
   def show
+    @activities = PublicActivity::Activity.all
   end
 
   private

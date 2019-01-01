@@ -25,6 +25,7 @@ class TimelinesController < ApplicationController
   # POST /timelines.json
   def create
     @timeline = Timeline.new(timeline_params)
+    @timeline.user_id = current_user.id
 
     respond_to do |format|
       if @timeline.save
@@ -63,6 +64,7 @@ class TimelinesController < ApplicationController
 
   def like
     @timeline.liked_by current_user
+    @timeline.create_activity key: 'timeline.liked', owner: current_user
     NotificationMailer.send_confirm_to_user(current_user, current_user).deliver
     redirect_to @timeline, notice: "You liked this!"
   end

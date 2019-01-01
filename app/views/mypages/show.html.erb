@@ -22,4 +22,11 @@
   <% end %>
 </p>
 
+<p>
+  <strong>Activity:</strong>
+  <% @activities.each do |activity| %>
+  <p><%= activity.key %></p>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
