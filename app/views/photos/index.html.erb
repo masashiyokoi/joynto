@@ -1,7 +1,11 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Photos</h1>
-
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a href="/timelines" class="nav-link">timelines</a>
+  </li>
+  <li class="nav-item">
+    <a href="/photos" class="nav-link active">photos</a>
+  </li>
+</ul>
 <table>
   <thead>
     <tr>
@@ -13,7 +17,7 @@
   <tbody>
     <% @photos.each do |photo| %>
       <tr>
-        <td><%= image_tag photo.image.to_s %></td>
+        <td><%= image_tag photo.image.url, width: "300px" %></td>
         <td><%= link_to 'Show', photo %></td>
         <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
         <td><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
