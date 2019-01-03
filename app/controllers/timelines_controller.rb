@@ -4,7 +4,7 @@ class TimelinesController < ApplicationController
   # GET /timelines
   # GET /timelines.json
   def index
-    @timelines = Timeline.all
+    @timelines = Timeline.order(id: :desc)
   end
 
   # GET /timelines/1
