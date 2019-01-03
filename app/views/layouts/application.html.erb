@@ -42,22 +42,38 @@
                 </button>
               </form> -->
               <ul class="nav nav-pills nav-stacked flex-column">
-                <li class="nav-item">
-                  <a class="nav-link" href="/timelines">新着情報を確認する（new）</a>
-                </li>
                 <% if user_signed_in? %>
+                <li class="nav-header"><%= current_user.name %></li>
                 <li class="nav-item">
                   <%= link_to 'プロフィール変更', edit_user_registration_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to '自分のプロフィールを確認する', mypages_show_path, class: "nav-link" %>
+                  <%= link_to 'プロフィール確認', mypages_show_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " href="/dialies">ダイアリー</a>
                 </li>
                 <% end %>
+                <li class="nav-header">Times</li>
+                <% if user_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to 'following', mypages_show_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "#{current_user.name}", mypages_show_path, class: "nav-link" %>
+                </li>
+                <% end %>
+                <li class="nav-item">
+                  <a class="nav-link" href="/timelines">All</a>
+                </li>
                 <li class="nav-header">More</li>
                 <li class="nav-item">
                   <a class="nav-link " href="/users">ユーザー一覧</a>
                 </li>
                 <% if user_signed_in? %>
+                  <li class="nav-item">
+                    <a class="nav-link " href="/users">メッセージ</a>
+                  </li>
                   <li class="nav-item">
                     <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %>
                   </li>
