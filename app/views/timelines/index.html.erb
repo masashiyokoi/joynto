@@ -6,25 +6,11 @@
     <a href="/photos" class="nav-link">photos</a>
   </li>
 </ul>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Content</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @timelines.each do |timeline| %>
-          <tr>
-            <td><%= timeline.type %></td>
-            <td><%= timeline.content %></td>
-            <td><%= link_to 'Show', timeline %></td>
-            <td><%= link_to 'Edit', edit_timeline_path(timeline) %></td>
-            <td><%= link_to 'Destroy', timeline, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= link_to 'New Timeline', new_timeline_path %>
+<hr>
+<% @timelines.each do |timeline| %>
+<%= link_to timeline do %>
+<p style="color:white;">  <%= timeline.content %> </p>
+<% end %>
+<hr>
+<% end %>
+<%= link_to 'New Timeline', new_timeline_path %>
