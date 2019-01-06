@@ -1,5 +1,6 @@
 class TimelinesController < ApplicationController
   before_action :set_timeline, only: [:show, :edit, :update, :destroy, :like, :unvote]
+  before_action :check_current_user, only: [:edit, :update, :destroy]
 
   # GET /timelines
   # GET /timelines.json
@@ -78,6 +79,12 @@ class TimelinesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_timeline
       @timeline = Timeline.find(params[:id])
+    end
+
+    def check_current_user
+      unless @timeline.user == current_user
+        redirect_to root_path, alert: 'no permission'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

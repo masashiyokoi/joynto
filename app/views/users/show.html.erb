@@ -21,6 +21,8 @@
 <% if user_signed_in? %>
   <%= link_to 'follow', follow_user_path(@user), method: :put %>
   <%= link_to 'stop_following', stop_following_user_path(@user), method: :put %>
+  <% if current_user?(@user) %>
   <%= link_to 'Edit', edit_user_path(@user) %>
+  <% end %>
 <% end %>
 <%= link_to 'Back', users_path %>

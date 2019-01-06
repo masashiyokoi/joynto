@@ -19,8 +19,10 @@
         <td><%= image_tag user.image.url, width: '100px' if user.image.present? %></td>
         <td><%= user.profile %></td>
         <td><%= link_to 'Show', user %></td>
+        <% if user_signed_in? && current_user?(user) %>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
