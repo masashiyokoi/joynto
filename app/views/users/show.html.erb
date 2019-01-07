@@ -1,8 +1,16 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @user.image.url, width: '300px' if @user.image.present? %>
+</p>
+
+<p>
+  <strong>Profile:</strong>
+  <%= @user.profile %>
 </p>
 
 <p>
