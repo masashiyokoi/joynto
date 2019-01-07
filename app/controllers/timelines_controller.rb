@@ -6,6 +6,7 @@ class TimelinesController < ApplicationController
   # GET /timelines.json
   def index
     @timelines = Timeline.order(id: :desc)
+    @new_timeline = Timeline.new
   end
 
   # GET /timelines/1

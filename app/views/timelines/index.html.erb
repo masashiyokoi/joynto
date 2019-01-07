@@ -7,10 +7,12 @@
   </li>
 </ul>
 <hr>
+<% if user_signed_in? %>
+<%= render 'form', timeline: @new_timeline %>
+<% end %>
 <% @timelines.each do |timeline| %>
 <%= link_to timeline do %>
 <p style="color:white;">  <%= timeline.user.name %> <%= image_tag timeline.user.image.url, width: 50 if timeline.user.image.present? %> <%= timeline.content %> </p>
 <% end %>
 <hr>
 <% end %>
-<%= link_to 'New Timeline', new_timeline_path %>
