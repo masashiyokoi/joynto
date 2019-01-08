@@ -45,6 +45,8 @@ gem 'public_activity'
 gem 'carrierwave', '~> 1.0'
 gem 'bootstrap', '~> 4.2.1'
 gem 'jquery-rails'
+gem 'redcarpet', '~> 2.3.0'
+gem 'coderay'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
