@@ -14,6 +14,10 @@ class TimelinesController < ApplicationController
     @new_timeline = Timeline.new
   end
 
+  def followings
+    @timelines = Timeline.where(user_id: current_user.all_following_users.pluck(:id)).order(id: :desc)
+  end
+
   # GET /timelines/1
   # GET /timelines/1.json
   def show

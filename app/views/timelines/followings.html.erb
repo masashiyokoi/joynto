@@ -1,0 +1,15 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a href="/timelines" class="nav-link active">timelines</a>
+  </li>
+  <li class="nav-item">
+    <a href="/photos" class="nav-link">photos</a>
+  </li>
+</ul>
+<hr>
+<% @timelines.each do |timeline| %>
+<%= link_to timeline do %>
+<p style="color:white;">  <%= timeline.user.name %> <%= image_tag timeline.user.image.url, width: 50 if timeline.user.image.present? %> <%= timeline.content %> </p>
+<% end %>
+<hr>
+<% end %>

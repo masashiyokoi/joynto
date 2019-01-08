@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
     collection do
       get 'users/:user_id' => 'timelines#users', as: 'users'
+      get 'followings' => 'timelines#followings', as: 'followings'
     end
   end
   devise_for :users
