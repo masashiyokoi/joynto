@@ -10,9 +10,4 @@
 <% if user_signed_in? %>
 <%= render 'form', timeline: @new_timeline %>
 <% end %>
-<% @timelines.each do |timeline| %>
-<%= link_to timeline do %>
-<p style="color:white;">  <%= timeline.user.name %> <%= image_tag timeline.user.image.url, width: 50 if timeline.user.image.present? %> <%= md_to_html(timeline.content).html_safe %> </p>
-<% end %>
-<hr>
-<% end %>
+<%= render 'timelines', timelines: @timelines %>
