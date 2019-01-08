@@ -7,6 +7,9 @@ Rails.application.routes.draw do
       put 'like'    => 'timelines#like'
       put 'unvote'  => 'timelines#unvote'
     end
+    collection do
+      get 'users/:user_id' => 'timelines#users', as: 'users'
+    end
   end
   devise_for :users
   resources :users do

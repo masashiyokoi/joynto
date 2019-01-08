@@ -9,6 +9,11 @@ class TimelinesController < ApplicationController
     @new_timeline = Timeline.new
   end
 
+  def users
+    @timelines = Timeline.where(user_id: params[:user_id]).order(id: :desc)
+    @new_timeline = Timeline.new
+  end
+
   # GET /timelines/1
   # GET /timelines/1.json
   def show
