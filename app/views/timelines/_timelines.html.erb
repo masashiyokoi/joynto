@@ -1,6 +1,6 @@
 <% timelines.each do |timeline| %>
 <%= link_to timeline do %>
-<p style="color:white;">  <%= timeline.user.name %> <%= image_tag timeline.user.image.url, width: 50 if timeline.user.image.present? %> <%= md_to_html(timeline.content).html_safe %> like:<%= timeline.votes_for.size %></p>
+<p style="color:white;">  <%= timeline.user.name %> <%= image_tag timeline.user.image.url, width: 50, class: "profile-img" if timeline.user.image.present? %> <%= md_to_html(timeline.content).html_safe %> like:<%= timeline.votes_for.size %></p>
 <% end %>
 <hr>
 <% end %>
