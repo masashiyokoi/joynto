@@ -6,6 +6,7 @@ class MypagesController < ApplicationController
 
   def show
     @activities = PublicActivity::Activity.all
+    render template: 'users/show'
   end
 
   private
