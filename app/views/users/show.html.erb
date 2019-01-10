@@ -31,6 +31,7 @@
   <%= link_to 'stop_following', stop_following_user_path(@user), method: :put %>
   <% if current_user?(@user) %>
   <%= link_to 'Edit', edit_user_path(@user) %>
+  <%= link_to 'パスワード変更', edit_user_registration_path %>
   <% end %>
 <% end %>
 <%= link_to 'Back', users_path %>
