@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :check_current_user, only: [:edit, :update, :destroy]
 
   def index
-    @users = User.all
+    @users = User.order("RAND()")
   end
 
   def show
