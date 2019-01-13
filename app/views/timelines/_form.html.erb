@@ -16,6 +16,12 @@
     <%= form.text_area :content, class: "form-control" %>
   </div>
 
+  <div class="form-group">
+    <%= form.label :image %>
+    <%= image_tag timeline.image.url, width: "300px" if timeline.image? %>
+    <%= form.file_field :image, class: "form-control" %>
+  </div>
+
   <div class="actions">
     <%= form.submit class: "btn" %>
   </div>

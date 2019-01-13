@@ -7,4 +7,6 @@ class Timeline < ApplicationRecord
   acts_as_votable
 
   validates :user_id, presence: true
+
+  mount_uploader :image, ImageUploader
 end
