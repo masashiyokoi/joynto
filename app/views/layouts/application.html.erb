@@ -11,14 +11,14 @@
 
   <body>
     <div class="container">
-        <header>
+        <!-- <header>
           <nav>
             <% unless user_signed_in? %>
               <%= link_to 'サインアップ', new_user_registration_path %>
               <%= link_to 'ログイン', new_user_session_path %>
             <% end %>
           </nav>
-        </header>
+        </header> -->
         <% if notice %><p class="notice"><%= notice %></p><% end %>
         <% if alert %><p class="alert"><%= alert %></p><% end %>
       <div class="row">
