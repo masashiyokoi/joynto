@@ -1,6 +1,15 @@
+<style>
+div:hover {
+  background-color: orange;
+}
+</style>
 <% timelines.each do |timeline| %>
 <%= link_to timeline do %>
-<p style="color:white;">  <%= image_tag timeline.user.image.url, width: 50, class: "profile-img" if timeline.user.image.present? %> <%= md_to_html(timeline.content) %> 　<%= image_tag timeline.image.url, width: 200, class: "profile-img", style: 'float: right;' if timeline.image.present? %> <%= timeline.user.name %> like:<%= timeline.votes_for.size %></p>
+<div>
+  <%= image_tag timeline.user.image.url, width: 50, class: "profile-img" if timeline.user.image.present? %>
+  <%= md_to_html(timeline.content) %>
+  <p><%= image_tag timeline.image.url, width: 200, class: "profile-img" if timeline.image.present? %></p>
+</div>
 <% end %>
 <hr>
 <% end %>
