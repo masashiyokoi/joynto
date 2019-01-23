@@ -51,4 +51,5 @@ production:
   <<: *default
   database: placck_production
   username: placck
-  password: <%= ENV['placck_DATABASE_PASSWORD'] %>
+  password: <%= ENV['PLACCK_DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
