@@ -7,7 +7,7 @@
 
 <p>
   <strong>Content:</strong>
-  <%= @timeline.content %>
+  <%= md_to_html(@timeline.content) %>
   <%= @timeline.created_at %>
 </p>
 
