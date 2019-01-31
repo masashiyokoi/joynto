@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :events
   get 'users/index'
   get 'users/show'
   resources :timelines do
