@@ -15,4 +15,7 @@ class User < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
+  def following_each_users
+    all_following & followers
+  end
 end
