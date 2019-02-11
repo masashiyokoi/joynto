@@ -2,6 +2,4 @@
 <% if user_signed_in? %>
 <%= render 'form', timeline: @new_timeline %>
 <% end %>
-<%= render 'timelines', timelines: @timelines %>
-
-<i class="fas fa-ad"></i>
+<%= render 'timelines/timelines', timelines: @timelines %>
