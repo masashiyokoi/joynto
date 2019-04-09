@@ -1,4 +1,4 @@
-<%= form_with(model: timeline, local: true) do |form| %>
+<%= form_with(url: [@channel, timeline] ,model: timeline) do |form| %>
   <% if timeline.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(timeline.errors.count, "error") %> prohibited this timeline from being saved:</h2>
