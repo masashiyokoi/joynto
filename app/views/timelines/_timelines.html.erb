@@ -3,10 +3,20 @@
 <div class="row">
   <div class="col-10">
     <%= md_to_html(timeline.content) %>
-    <p><%= image_tag timeline.image.url, width: 200 if timeline.image.present? %></p>
+    <p>
+      <% if timeline.image? %>
+        <% if timeline.image.file.content_type.include?('image/') %>
+          <%= image_tag timeline.image.url, width: 200 if timeline.image.present? %>
+        <% else %>
+          <%= video_tag timeline.image.url, width: "50%", controls: true, autobuffer: true %>
+        <% end %>
+      <% end %>
+    </p>
   </div>
   <div class="col-2">
     <div class="profile-img-div">
+      <%= timeline.created_at %>
+
       <%= image_tag timeline.user.image.url, class: "profile-img" if timeline.user.image.present? %>
     </div>
   </div>

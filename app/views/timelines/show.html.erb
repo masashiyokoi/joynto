@@ -12,7 +12,14 @@
 </p>
 
 <p>
-  <%= image_tag @timeline.image.url, width: "600px" if @timeline.image? %>
+  <% if @timeline.image? %>
+    <% if @timeline.image.file.content_type.include?('image/') %>
+    <%= image_tag @timeline.image.url, width: 200 if @timeline.image.present? %>
+    <% else %>
+      <%= video_tag @timeline.image.url, width: "50%",
+                    controls: true, autobuffer: true %>
+    <% end %>
+  <% end %>
 </p>
 
 <p>
