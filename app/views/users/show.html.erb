@@ -21,9 +21,9 @@
 </p>
 
 <p>
-  <strong>Timelines:</strong>
-  <% @user.timelines.each do |timeline| %>
-  <p><%= link_to timeline.content, timeline_path(timeline) %></p>
+  <strong>messages:</strong>
+  <% @user.messages.each do |message| %>
+  <p><%= link_to message.content, message_path(message) %></p>
   <% end %>
 </p>
 <% if user_signed_in? %>

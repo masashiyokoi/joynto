@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable
 
-  has_many :timelines
+  has_many :messages
 
   validates :name, presence: true
 

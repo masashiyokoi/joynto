@@ -1,10 +1,10 @@
-<%= form_with(url: [@channel, timeline] ,model: timeline) do |form| %>
-  <% if timeline.errors.any? %>
+<%= form_with(url: [@channel, message] ,model: message) do |form| %>
+  <% if message.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(timeline.errors.count, "error") %> prohibited this timeline from being saved:</h2>
+      <h2><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h2>
 
       <ul>
-      <% timeline.errors.full_messages.each do |message| %>
+      <% message.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -18,7 +18,7 @@
 
   <div class="form-group">
     <%= form.label :image %>
-    <%= image_tag timeline.image.url, width: "300px" if timeline.image? %>
+    <%= image_tag message.image.url, width: "300px" if message.image? %>
     <%= form.file_field :image, class: "form-control" %>
   </div>
 

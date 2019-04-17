@@ -30,7 +30,7 @@
               <button class="nav-toggler nav-toggler-md sidebar-toggler" type="button" data-toggle="collapse" data-target="#nav-toggleable-md">
                 <span class="sr-only">Toggle nav</span>
               </button>
-              <a class="sidebar-brand img-responsive" href="/timelines">
+              <a class="sidebar-brand img-responsive" href="/messages">
                 <h1 class="">ploak(α. ver)</h1>
               </a>
             </div>
@@ -58,14 +58,14 @@
                 <li class="nav-header">Times</li>
                 <% if user_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to 'フォロー中', followings_timelines_path, class: "nav-link" %>
+                  <%= link_to 'フォロー中', followings_messages_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "#{current_user.name}", users_timelines_path(current_user.id), class: "nav-link" %>
+                  <%= link_to "#{current_user.name}", users_messages_path(current_user.id), class: "nav-link" %>
                 </li>
                 <% end %>
                 <li class="nav-item">
-                  <a class="nav-link" href="/timelines">全て</a>
+                  <a class="nav-link" href="/messages">全て</a>
                 </li>
                 <li class="nav-header">More</li>
                 <li class="nav-item">

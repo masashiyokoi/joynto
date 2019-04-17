@@ -7,8 +7,8 @@ class ChannelsController < ApplicationController
   end
 
   def show
-    @new_timeline = Timeline.new
-    @timelines = Timeline.where(channel_id: @channel.id)
+    @new_message = message.new
+    @messages = message.where(channel_id: @channel.id)
   end
 
   private

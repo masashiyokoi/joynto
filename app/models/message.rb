@@ -1,4 +1,4 @@
-class Timeline < ApplicationRecord
+class Message < ApplicationRecord
   include PublicActivity::Model
   tracked
 
