@@ -1,16 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Type:</strong>
-  <%= @message.type %>
-</p>
-
-<p>
-  <strong>Content:</strong>
   <%= md_to_html(@message.content) %>
-  <%= @message.created_at %>
 </p>
-
 <p>
   <% if @message.image? %>
     <% if @message.image.file.content_type.include?('image/') %>
@@ -21,6 +13,8 @@
     <% end %>
   <% end %>
 </p>
+
+<%= @message.created_at %>
 
 <p>
   <% @message.votes_for.up.by_type(User).voters.each do |voter| %>

@@ -12,11 +12,10 @@
         <% end %>
       <% end %>
     </p>
+    <%= message.created_at %>
   </div>
   <div class="col-2">
     <div class="profile-img-div">
-      <%= message.created_at %>
-
       <%= image_tag message.user.image.url, class: "profile-img" if message.user.image.present? %>
     </div>
   </div>
