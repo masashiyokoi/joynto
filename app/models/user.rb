@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   has_many :messages
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 
   acts_as_voter
   acts_as_followable
