@@ -32,7 +32,19 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   process resize_to_fit: [50, 50]
   # end
 
-  version :circle do
+  version :large do
+    process resize_to_fit: [768, nil]
+  end
+
+  version :middle do
+    process resize_to_fit: [384, nil]
+  end
+
+  version :small do
+    process resize_to_fit: [150, nil]
+  end
+
+  version :square do
     process resize_to_fill: [150, 150]
   end
 
