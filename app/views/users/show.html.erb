@@ -9,14 +9,36 @@
 </p>
 <h2>Follower</h2>
   <% @user.followers.each do |user| %>
-  <p><%= link_to user.name, user_path(user) %></p>
+    <%= link_to user_path(user) do %>
+      <%= image_tag user.image.square.url, class: 'rounded-circle', width: '50px' if user.image.present? %>
+    <% end %>
+  <% end %>
+
+<h2>Following</h2>
+  <% @user.all_following.each do |user| %>
+    <%= link_to user_path(user) do %>
+      <%= image_tag user.image.square.url, class: 'rounded-circle', width: '50px' if user.image.present? %>
+    <% end %>
   <% end %>
 
 
 <h2>messages</h2>
-  <% @user.messages.each do |message| %>
-  <p><%= link_to message.content, message_path(message) %></p>
-  <% end %>
+<% @user.messages.each do |message| %>
+  <%= md_to_html(message.content) %>
+  <p>
+    <%= link_to message do %>
+      <%= image_tag message.image.url, width: '33%' if message.image.present? %>
+    <% end %>
+  </p>
+  <p>
+    <%= link_to message do %>
+      <%= video_tag message.video.url, width: "33%", controls: true, autobuffer: true if message.video.present? %>
+    <% end %>
+  </p>
+  <%= message.created_at %>
+<hr>
+<% end %>
+
 <% if user_signed_in? %>
   <%= link_to 'follow', follow_user_path(@user), method: :put %>
   <%= link_to 'stop_following', stop_following_user_path(@user), method: :put %>
