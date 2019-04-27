@@ -4,7 +4,7 @@
       <%= md_to_html(message.content) %>
       <p>
         <%= link_to message do %>
-          <%= image_tag message.image.url, width: '33%' if message.image.present? %>
+          <%= image_tag message.image.middle.url, width: '33%' if message.image.present? %>
         <% end %>
       </p>
       <p>
