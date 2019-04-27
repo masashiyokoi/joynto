@@ -2,9 +2,11 @@
 <hr>
 <% @users.each do |user| %>
   <%= link_to user_path(user) do %>
-    <%= user.name %>
-    <%= image_tag user.image.url, width: '100px' if user.image.present? %>
-    <%= user.profile %>
+  <div>
+    <%= image_tag user.image.circle.url, class: 'rounded-circle', width: '50px' if user.image.present? %>
+    <label><%= user.name %></label>
+
+  </div>
   <% end %>
   <hr>
 <% end %>
