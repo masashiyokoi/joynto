@@ -16,13 +16,11 @@
 
 <%= @message.created_at %>
 </p>
+<%= render 'vote', message: @message %>
 <hr>
 <p>
-  <% @message.votes_for.up.by_type(User).voters.each do |voter| %>
-  <%= link_to voter.name, user_path(voter) %>
-  <% end %>
 <% if user_signed_in? %>
-  <%= link_to 'Like', like_message_path(@message), method: :put %>
+  <%= link_to 'bolt!', like_message_path(@message), method: :put %>
   <%= link_to 'unvote', unvote_message_path(@message), method: :put %>
   <% if current_user?(@message.user) %>
   <%= link_to 'Edit', edit_message_path(@message) %>

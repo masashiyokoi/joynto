@@ -1,0 +1,23 @@
+<% if message.votes_for.up.by_type(User).voters.present? %>
+<i class="fas fa-bolt" data-toggle="modal" data-target="#exampleModal<%= message.id %>"></i>
+<% end %>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal<%= message.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">voter</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <% message.votes_for.up.by_type(User).voters.each do |voter| %>
+          <%= link_to voter.name, user_path(voter) %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
