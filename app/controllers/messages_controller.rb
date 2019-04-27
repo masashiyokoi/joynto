@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.order(id: :desc)
+    @messages = Message.page(params[:page]).per(24).order(id: :desc)
     @new_message = Message.new
   end
 
