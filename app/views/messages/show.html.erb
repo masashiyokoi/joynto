@@ -9,14 +9,18 @@
 <p>
   <%= video_tag @message.video.url, width: "100%", controls: true, autobuffer: true if @message.video.present? %>
 </p>
+<p>
+  <%= link_to user_path(@message.user) do %>
+    <%= image_tag @message.user.image.square.url, class: 'rounded-circle', width: '50px' if @message.user.image.present? %>
+  <% end %>
 
 <%= @message.created_at %>
-
+</p>
+<hr>
 <p>
   <% @message.votes_for.up.by_type(User).voters.each do |voter| %>
-  <p><%= link_to voter.name, user_path(voter) %></p>
+  <%= link_to voter.name, user_path(voter) %>
   <% end %>
-</p>
 <% if user_signed_in? %>
   <%= link_to 'Like', like_message_path(@message), method: :put %>
   <%= link_to 'unvote', unvote_message_path(@message), method: :put %>
@@ -26,3 +30,4 @@
   <% end %>
 <% end %>
 <%= link_to 'Back', messages_path %>
+</p>

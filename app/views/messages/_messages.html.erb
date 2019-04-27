@@ -1,22 +1,26 @@
 <% messages.each do |message| %>
-<%= link_to message do %>
 <div class="row">
-  <div class="col-10">
-    <%= md_to_html(message.content) %>
-    <p>
-      <%= image_tag message.image.url, width: '33%' if message.image.present? %>
-    </p>
-    <p>
-    <%= video_tag message.video.url, width: "33%", controls: true, autobuffer: true if message.video.present? %>
-  </p>
-    <%= message.created_at %>
-  </div>
-  <div class="col-2">
-    <div class="profile-img-div">
-      <%= image_tag message.user.image.url, class: "profile-img" if message.user.image.present? %>
+    <div class="col-10">
+      <%= md_to_html(message.content) %>
+      <p>
+        <%= link_to message do %>
+          <%= image_tag message.image.url, width: '33%' if message.image.present? %>
+        <% end %>
+      </p>
+      <p>
+        <%= link_to message do %>
+          <%= video_tag message.video.url, width: "33%", controls: true, autobuffer: true if message.video.present? %>
+        <% end %>
+      </p>
+      <%= message.created_at %>
     </div>
+  <div class="col-2">
+    <%= link_to user_path(message.user) do %>
+    <div class="profile-img-div">
+      <%= image_tag message.user.image.square.url, class: "profile-img" if message.user.image.present? %>
+    </div>
+    <% end %>
   </div>
 </div>
-<% end %>
 <hr>
 <% end %>
