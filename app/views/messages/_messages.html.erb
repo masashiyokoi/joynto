@@ -4,10 +4,10 @@
   <div class="col-10">
     <%= md_to_html(message.content) %>
     <p>
-      <%= image_tag message.image.url, width: '100%' if message.image.present? %>
+      <%= image_tag message.image.url, width: '33%' if message.image.present? %>
     </p>
     <p>
-    <%= video_tag message.video.url, width: "50%", controls: true, autobuffer: true if message.video.present? %>
+    <%= video_tag message.video.url, width: "33%", controls: true, autobuffer: true if message.video.present? %>
   </p>
     <%= message.created_at %>
   </div>
