@@ -1,5 +1,5 @@
 <% if message.votes_for.up.by_type(User).voters.present? %>
-<i class="fas fa-bolt" data-toggle="modal" data-target="#exampleModal<%= message.id %>"></i>
+<i class="fas fa-bolt" data-toggle="modal" data-target="#exampleModal<%= message.id %>" href="#exampleModal<%= message.id %>"></i>
 <% end %>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal<%= message.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
