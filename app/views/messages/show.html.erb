@@ -4,14 +4,10 @@
   <%= md_to_html(@message.content) %>
 </p>
 <p>
-  <% if @message.image? %>
-    <% if @message.image.file.content_type.include?('image/') %>
-    <%= image_tag @message.image.url, width: '100%' if @message.image.present? %>
-    <% else %>
-      <%= video_tag @message.image.url, width: "50%",
-                    controls: true, autobuffer: true %>
-    <% end %>
-  <% end %>
+  <%= image_tag @message.image.url, width: '100%' if @message.image.present? %>
+</p>
+<p>
+  <%= video_tag @message.video.url, width: "50%", controls: true, autobuffer: true if @message.video.present? %>
 </p>
 
 <%= @message.created_at %>

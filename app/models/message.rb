@@ -9,4 +9,5 @@ class Message < ApplicationRecord
   validates :user_id, presence: true
 
   mount_uploader :image, ImageUploader
+  mount_uploader :video, VideoUploader
 end
