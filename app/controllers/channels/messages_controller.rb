@@ -1,45 +1,28 @@
-class MessagesController < ApplicationController
+class Channels::MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy, :like, :unvote]
-  before_action :check_current_user, only: [:edit, :update, :destroy]
 
-  # GET /messages
-  # GET /messages.json
-  def index
-    @messages = Message.page(params[:page]).per(24).order(id: :desc)
-    @new_message = Message.new
-  end
-
-  def users
-    @messages = Message.where(user_id: params[:user_id]).page(params[:page]).per(24).order(id: :desc)
-    @new_message = Message.new
-  end
-
-  def followings
-    @messages = Message.where(user_id: current_user.all_following_users.pluck(:id)).order(id: :desc)
-  end
-
-  # GET /messages/1
-  # GET /messages/1.json
   def show
+    @new_message = Message.new
+    @messages = Message.where(channel_id: @channel.id)
   end
 
-  # GET /messages/new
   def new
     @message = Message.new
   end
 
-  # GET /messages/1/edit
   def edit
   end
 
-  # POST /messages
-  # POST /messages.json
   def create
     @message = Message.new(message_params)
     @message.user_id = current_user.id
-
+    @message.channel_id = params[:channel_id]
+    @channel = Channel.find(params[:channel_id])
     respond_to do |format|
       if @message.save
+        @channel.users.where.not(channel_users: { user_id: current_user.id }).each do |user|
+          NotificationMailer.direct_message_to_user(current_user, user).deliver
+        end
         format.html { redirect_to @message, notice: 'message was successfully created.' }
         format.json { render :show, status: :created, location: @message }
       else
@@ -54,7 +37,7 @@ class MessagesController < ApplicationController
   def update
     respond_to do |format|
       if @message.update(message_params)
-        format.html { redirect_to @message, notice: 'message was successfully updated.' }
+        format.html { redirect_to channelemessage, notice: 'message was successfully updated.' }
         format.json { render :show, status: :ok, location: @message }
       else
         format.html { render :edit }
@@ -73,22 +56,11 @@ class MessagesController < ApplicationController
     end
   end
 
-  def like
-    @message.liked_by current_user
-    @message.create_activity key: 'message.liked', owner: current_user
-    NotificationMailer.send_confirm_to_user(current_user, @message.user).deliver
-    redirect_to @message, notice: "You liked this!"
-  end
-
-  def unvote
-    @message.disliked_by current_user
-    redirect_to @message, notice: "You disliked this!"
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_message
-      @message = Message.find(params[:id])
+      @channel = Channel.find(params[:id])
+      @message = message.find(params[:id])
     end
 
     def check_current_user
@@ -99,6 +71,6 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
-      params.require(:message).permit(:type, :content, :image, :video)
+      params.require(:message).permit(:type, :content, :image)
     end
 end

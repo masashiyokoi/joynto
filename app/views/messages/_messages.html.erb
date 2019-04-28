@@ -12,7 +12,7 @@
         <%= video_tag message.video.url, width: "33%", controls: true, autobuffer: true if message.video.present? %>
       <% end %>
     </p>
-    <%= render 'vote', message: message %>
+    <%= render 'messages/vote', message: message %>
   </div>
   <div class="col-2">
     <%= link_to user_path(message.user) do %>

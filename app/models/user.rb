@@ -6,6 +6,8 @@ class User < ApplicationRecord
          :confirmable, :lockable, :timeoutable
 
   has_many :messages
+  has_many :channel_users
+  has_many :channels, through: :channel_users
 
   validates :name, presence: true, uniqueness: true
 
