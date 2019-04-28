@@ -44,7 +44,7 @@ gem 'acts_as_votable'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem 'public_activity'
 gem 'carrierwave', '~> 1.0'
-gem 'bootstrap', '~> 4.2.1'
+gem 'bootstrap', '>= 4.3.1'
 gem 'jquery-rails'
 gem 'redcarpet', '~> 2.3.0'
 gem 'coderay'
@@ -52,6 +52,9 @@ gem 'mini_magick'
 gem "fog"
 gem 'kaminari'
 gem 'kaminari-bootstrap'
+gem 'acts_as_commentable_with_threading'
+gem 'rubocop'
+gem 'rubocop-performance'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
