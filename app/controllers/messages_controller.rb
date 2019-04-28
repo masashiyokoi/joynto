@@ -21,6 +21,9 @@ class MessagesController < ApplicationController
   # GET /messages/1
   # GET /messages/1.json
   def show
+    if user_signed_in?
+      @new_comment = Comment.build_from(@message, current_user.id, "")
+    end
   end
 
   # GET /messages/new
