@@ -61,7 +61,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "placck_#{Rails.env}"
+  # config.active_job.queue_name_prefix = "ploak_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
 
@@ -71,9 +71,9 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: 'smtp.sendgrid.net',
     port: 587,
-    domain: 'placck.koagen.com',
-    user_name: ENV['PLACCK_SENDGRID_USER_NAME'],
-    password: ENV['PLACCK_SENDGRID_PASSWORD'],
+    domain: 'ploak.koagen.com',
+    user_name: ENV['PLOAK_SENDGRID_USER_NAME'],
+    password: ENV['PLOAK_SENDGRID_PASSWORD'],
     authentication: :plain,
     enable_starttls_auto: true
   }
