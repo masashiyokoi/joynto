@@ -6,10 +6,13 @@ class User < ApplicationRecord
          :confirmable, :lockable, :timeoutable
 
   has_many :messages
+  has_one :timeline
   has_many :channel_users
   has_many :channels, through: :channel_users
 
   validates :name, presence: true, uniqueness: true
+
+  after_create :create_timeline
 
   acts_as_voter
   acts_as_followable
@@ -19,5 +22,12 @@ class User < ApplicationRecord
 
   def following_each_users
     all_following & followers
+  end
+
+  private
+
+  def create_timeline
+    return if timeline
+    Channel::Timeline.create(user_id: id)
   end
 end
