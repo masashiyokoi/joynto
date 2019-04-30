@@ -3,7 +3,7 @@ class Channels::MessagesController < ApplicationController
 
   def show
     @new_message = Message.new
-    @messages = Message.where(channel_id: @channel.id)
+    @messages = Message.where(channel_id: @channel_direct.id)
   end
 
   def new
@@ -17,11 +17,11 @@ class Channels::MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.user_id = current_user.id
     @message.channel_id = params[:channel_id]
-    @channel = Channel.find(params[:channel_id])
+    @channel_direct = Channel::Direct.find(params[:channel_id])
     respond_to do |format|
       if @message.save
-        @channel.users.where.not(channel_users: { user_id: current_user.id }).each do |user|
-          NotificationMailer.direct_message_to_user(current_user, user).deliver
+        @channel_direct.users.where.not(channel_users: { user_id: current_user.id }).each do |user|
+          NotificationMailer.channel_direct_to_user(current_user, user).deliver
         end
         format.html { redirect_to @message, notice: 'message was successfully created.' }
         format.json { render :show, status: :created, location: @message }
@@ -59,7 +59,7 @@ class Channels::MessagesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_message
-      @channel = Channel.find(params[:id])
+      @channel_direct = Channel::Direct.find(params[:id])
       @message = message.find(params[:id])
     end
 
