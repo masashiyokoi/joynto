@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :confirmable, :lockable, :timeoutable
 
   has_many :messages
-  has_one :timeline
+  has_one :channel_timeline, class_name: 'Channel::Timeline'
   has_many :channel_users
   has_many :channels, through: :channel_users
 
