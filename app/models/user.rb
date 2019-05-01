@@ -6,9 +6,8 @@ class User < ApplicationRecord
          :confirmable, :lockable, :timeoutable
 
   has_many :messages
-  has_one :channel_timeline, class_name: 'Channel::Timeline'
   has_many :channel_users
-  has_many :channels, through: :channel_users
+  has_one :channel_times, -> { times }, class_name: 'Channel'
 
   validates :name, presence: true, uniqueness: true
 
@@ -27,7 +26,10 @@ class User < ApplicationRecord
   private
 
   def create_timeline
-    return if timeline
-    Channel::Timeline.create(user_id: id)
+    return if channel_times
+    channel = Channel.create(
+      kind: :times,
+      user_id: id
+    )
   end
 end
