@@ -24,11 +24,6 @@ Rails.application.routes.draw do
   resources :channels do
     resources :messages, controller: 'channels/messages'
   end
-  namespace :channels do
-    resources :direct do
-      resources :messages, controller: 'directs/messages'
-    end
-  end
   resources :comments
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
