@@ -23,7 +23,7 @@
 
 
 <h2>messages</h2>
-<% @user.messages.is_channel_times.each do |message| %>
+<% @user.messages.is_channel_times.order(id: :desc).each do |message| %>
   <%= md_to_html(message.content) %>
   <p>
     <%= link_to message do %>
