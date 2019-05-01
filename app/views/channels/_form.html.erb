@@ -1,4 +1,4 @@
-<%= form_with(url: channels_direct_messages_path(@channel.id), method: :post, model: message) do |form| %>
+<%= form_with(url: channel_messages_path(@channel.id), method: :post, model: message) do |form| %>
   <% if message.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h2>

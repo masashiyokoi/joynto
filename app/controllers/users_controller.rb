@@ -64,12 +64,12 @@ class UsersController < ApplicationController
     NotificationMailer.send_follow_message_to_user(current_user, @user).deliver
 
     if @user.following? current_user
-      channel = Direct.create(
-        type: 'prvate'
+      channel = Channel.create(
+        kind: :direct_message
       )
 
       [current_user, @user].each do |user|
-        channel.channel_users.create(user_id: user.id)
+        user.follow channel
       end
 
       NotificationMailer.direct_message_create(current_user, @user).deliver

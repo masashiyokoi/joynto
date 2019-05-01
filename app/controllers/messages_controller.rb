@@ -5,17 +5,17 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.is_timeline.page(params[:page]).per(24).order(id: :desc)
+    @messages = Message.is_channel_times.page(params[:page]).per(24).order(id: :desc)
     @new_message = Message.new
   end
 
   def users
-    @messages = Message.is_timeline.where(user_id: params[:user_id]).page(params[:page]).per(24).order(id: :desc)
+    @messages = Message.is_channel_times.where(user_id: params[:user_id]).page(params[:page]).per(24).order(id: :desc)
     @new_message = Message.new
   end
 
   def followings
-    @messages = Message.is_timeline.where(user_id: current_user.all_following_users.pluck(:id)).order(id: :desc)
+    @messages = Message.is_channel_times.where(user_id: current_user.all_following_users.pluck(:id)).order(id: :desc)
   end
 
   # GET /messages/1
