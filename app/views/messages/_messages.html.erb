@@ -12,6 +12,7 @@
         <%= video_tag message.video.url, width: "33%", controls: true, autobuffer: true if message.video.present? %>
       <% end %>
     </p>
+    <p><%= message.created_at %></p>
     <%= render 'messages/vote', message: message %>
   </div>
   <div class="col-2">
