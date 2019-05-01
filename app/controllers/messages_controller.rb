@@ -40,6 +40,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.user_id = current_user.id
+    @message.channel_id = current_user.channel_times.id
 
     respond_to do |format|
       if @message.save
