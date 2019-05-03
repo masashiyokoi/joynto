@@ -1,18 +1,16 @@
 <% messages.each do |message| %>
 <div class="row">
   <div class="col-10">
+    <%= link_to message do %>
     <%= md_to_html(message.content) %>
     <p>
-      <%= link_to message do %>
-        <%= image_tag message.image.middle.url, width: '33%' if message.image.present? %>
-      <% end %>
+      <%= image_tag message.image.middle.url, width: '33%' if message.image.present? %>
     </p>
     <p>
-      <%= link_to message do %>
-        <%= video_tag message.video.url, width: "33%", controls: true, autobuffer: true if message.video.present? %>
-      <% end %>
+      <%= video_tag message.video.url, width: "33%", controls: true, autobuffer: true if message.video.present? %>
     </p>
     <p><%= message.created_at %></p>
+    <% end %>
     <%= render 'messages/vote', message: message %>
   </div>
   <div class="col-2">
