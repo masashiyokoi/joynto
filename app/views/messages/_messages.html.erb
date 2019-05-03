@@ -1,6 +1,6 @@
 <% messages.each do |message| %>
 <div class="row">
-  <div class="col-10">
+  <div class="col-10 message-content">
     <%= md_to_html(message.content) %>
     <p>
       <%= image_tag message.image.middle.url, width: '33%' if message.image.present? %>
