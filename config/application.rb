@@ -15,7 +15,6 @@ module Ploak
       #{config.root}/app/models/channel/
     )
 
-    ActiveRecord::Base.store_base_sti_class = false
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
