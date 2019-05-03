@@ -9,7 +9,7 @@
       <%= video_tag message.video.url, width: "33%", controls: true, autobuffer: true if message.video.present? %>
     </p>
     <%= link_to message do %>
-      <%= message.created_at %>
+      <p><%= message.created_at %></p>
     <% end %>
     <%= render 'messages/vote', message: message %>
   </div>
