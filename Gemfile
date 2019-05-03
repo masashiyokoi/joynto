@@ -55,7 +55,6 @@ gem 'kaminari-bootstrap'
 gem 'acts_as_commentable_with_threading'
 gem 'rubocop'
 gem 'rubocop-performance'
-gem 'store_base_sti_class'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
