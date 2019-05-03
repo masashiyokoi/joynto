@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :emojis
   get 'users/index'
   get 'users/show'
   resources :messages do
