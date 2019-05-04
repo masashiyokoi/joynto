@@ -70,6 +70,9 @@
                 <li class="nav-header">More</li>
                 <% if user_signed_in? %>
                   <li class="nav-item">
+                    <%= link_to 'invite', new_user_invitation_path, class: "nav-link" %>
+                  </li>
+                  <li class="nav-item">
                     <%= link_to 'logout', destroy_user_session_path, method: :delete, class: "nav-link" %>
                   </li>
                 <% else %>
