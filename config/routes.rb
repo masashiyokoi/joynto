@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   resources :emojis
-  get 'users/index'
-  get 'users/show'
   resources :messages do
     member do
       put 'like'    => 'messages#like'
@@ -12,6 +10,7 @@ Rails.application.routes.draw do
       get 'followings' => 'messages#followings', as: 'followings'
     end
   end
+  get 'users/sign_up', to: 'messages#index'
   devise_for :users
   resources :users do
     member do
