@@ -2,6 +2,7 @@
 <div class="row">
   <div class="col-12 message-content">
     <%= md_to_html(message.content) %>
+    <%= link_to message do %>
     <p>
       <%= image_tag message.image.middle.url, width: '33%' if message.image.present? %>
     </p>
@@ -9,6 +10,7 @@
       <%= video_tag message.video.url, width: "33%", controls: true, autobuffer: true if message.video.present? %>
     </p>
     <p>
+    <% end %>
     <%= link_to message do %>
       <%= message.created_at %>
     <% end %>
