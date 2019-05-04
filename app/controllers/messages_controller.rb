@@ -15,7 +15,9 @@ class MessagesController < ApplicationController
   end
 
   def followings
-    @messages = Message.is_channel_times.where(user_id: current_user.all_following_users.pluck(:id)).order(id: :desc)
+    @messages = Message.is_channel_times
+      .where(user_id: current_user.all_following_users.pluck(:id))
+      .page(params[:page]).per(24).order(id: :desc)
   end
 
   # GET /messages/1
