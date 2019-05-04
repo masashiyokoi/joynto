@@ -15,7 +15,7 @@
       <%= message.created_at %>
     <% end %>
     <%= link_to user_path(message.user) do %>
-      <%= image_tag message.user.image.square.url, class: "profile-img" if message.user.image.present? %>
+      <%= image_tag message.user.image.square.url, class: "profile-img rounded-circle" if message.user.image.present? %>
     <% end %>
     </p>
     <%= render 'messages/vote', message: message %>
