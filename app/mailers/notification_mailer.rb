@@ -43,4 +43,15 @@ class NotificationMailer < ApplicationMailer
       format.text
     end
   end
+
+  def new_user_announce(new_user, to_user)
+    @new_user = new_user
+    @to_user = to_user
+    mail(
+      subject: "新規ユーザーの方が登録されました。",
+      to: @to_user.email
+    ) do |format|
+      format.text
+    end
+  end
 end
