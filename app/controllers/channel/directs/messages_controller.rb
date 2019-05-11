@@ -1,4 +1,4 @@
-class Channels::MessagesController < ApplicationController
+class Channel::Directs::MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy, :like, :unvote]
 
   def index

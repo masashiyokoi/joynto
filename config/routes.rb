@@ -21,8 +21,10 @@ Rails.application.routes.draw do
   root 'messages#index'
   get 'mypages/index'
   get 'mypages/show'
-  resources :channels do
-    resources :messages, controller: 'channels/messages'
+  namespace :channel do
+    resources :directs do
+      resources :messages, controller: 'channel/directs/messages'
+    end
   end
   resources :comments
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,4 +1,4 @@
-class ChannelsController < ApplicationController
+class Channel::DirectsController < ApplicationController
   before_action :set_channel, only: [:show, :edit, :update, :destroy]
 
   def index
