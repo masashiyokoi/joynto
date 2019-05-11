@@ -27,6 +27,7 @@ body {
   color: #F0F8FF;
   text-align: left;
   background-color: #2f0006;
+  word-break: break-all;
 }
 
 hr {
@@ -38,9 +39,8 @@ h1 {
 }
 
 .profile-img {
-  border-radius: 5px;
   margin: 5px 0;
-  right: 0px;
+  right: 10px;
   bottom: 0px;
   max-width: 50px;
   position: absolute;

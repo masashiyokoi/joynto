@@ -2,7 +2,7 @@ class ChannelsController < ApplicationController
   before_action :set_channel, only: [:show, :edit, :update, :destroy]
 
   def index
-    @channels = current_user.channels
+    @channels = current_user.following_by_type('Channel')
   end
 
   def show

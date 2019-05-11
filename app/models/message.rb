@@ -3,6 +3,7 @@ class Message < ApplicationRecord
   tracked
 
   belongs_to :user
+  belongs_to :channel
 
   acts_as_votable
   acts_as_commentable
@@ -11,4 +12,6 @@ class Message < ApplicationRecord
 
   mount_uploader :image, ImageUploader
   mount_uploader :video, VideoUploader
+
+  scope :is_channel_times, ->() { joins(:channel).where(channels: { kind: :times }) }
 end

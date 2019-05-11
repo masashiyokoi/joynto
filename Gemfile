@@ -38,7 +38,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 # Devise
-gem 'devise'
+gem 'devise', '>= 4.6'
 
 gem 'acts_as_votable'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
@@ -55,6 +55,7 @@ gem 'kaminari-bootstrap'
 gem 'acts_as_commentable_with_threading'
 gem 'rubocop'
 gem 'rubocop-performance'
+gem 'devise_invitable', '~> 2.0.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

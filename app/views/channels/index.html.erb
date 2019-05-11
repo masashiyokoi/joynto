@@ -2,7 +2,7 @@
 <hr>
 <% @channels.each do |channel| %>
   <%= link_to channel_path(channel) do %>
-    <%= channel.users.pluck(:name).join(',') %>
+    <%= channel.user_followers.pluck(:name).join(',') %>
   <% end %>
   <hr>
 <% end %>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Emojis</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Image</th>
+      <th>Vote scope</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @emojis.each do |emoji| %>
+      <tr>
+        <td><%= emoji.name %></td>
+        <td><%= emoji.image %></td>
+        <td><%= emoji.vote_scope %></td>
+        <td><%= link_to 'Show', emoji %></td>
+        <td><%= link_to 'Edit', edit_emoji_path(emoji) %></td>
+        <td><%= link_to 'Destroy', emoji, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Emoji', new_emoji_path %>

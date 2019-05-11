@@ -1,9 +1,13 @@
 class Channels::MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy, :like, :unvote]
 
+  def index
+    @channel_directs = current_user.follows_by_type('Channel')
+  end
+
   def show
     @new_message = Message.new
-    @messages = Message.where(channel_id: @channel.id)
+    @messages = Message.where(channel_id: @channel_directs.id)
   end
 
   def new
@@ -20,13 +24,13 @@ class Channels::MessagesController < ApplicationController
     @channel = Channel.find(params[:channel_id])
     respond_to do |format|
       if @message.save
-        @channel.users.where.not(channel_users: { user_id: current_user.id }).each do |user|
+        @channel.user_followers.where.not(id: current_user.id ).each do |user|
           NotificationMailer.direct_message_to_user(current_user, user).deliver
         end
-        format.html { redirect_to @message, notice: 'message was successfully created.' }
+        format.html { redirect_to channel_path(@channel), notice: 'message was successfully created.' }
         format.json { render :show, status: :created, location: @message }
       else
-        format.html { render :new }
+        format.html { redirect_to channel_path(@channel), alert: 'message was not successfully created.' }
         format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end

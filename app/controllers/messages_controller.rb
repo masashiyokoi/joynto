@@ -5,22 +5,27 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.page(params[:page]).per(24).order(id: :desc)
+    @messages = Message.is_channel_times.page(params[:page]).per(24).order(id: :desc)
     @new_message = Message.new
   end
 
   def users
-    @messages = Message.where(user_id: params[:user_id]).page(params[:page]).per(24).order(id: :desc)
+    @messages = Message.is_channel_times.where(user_id: params[:user_id]).page(params[:page]).per(24).order(id: :desc)
     @new_message = Message.new
   end
 
   def followings
-    @messages = Message.where(user_id: current_user.all_following_users.pluck(:id)).order(id: :desc)
+    @messages = Message.is_channel_times
+      .where(user_id: current_user.all_following_users.pluck(:id))
+      .page(params[:page]).per(24).order(id: :desc)
   end
 
   # GET /messages/1
   # GET /messages/1.json
   def show
+    if user_signed_in?
+      @new_comment = Comment.build_from(@message, current_user.id, "")
+    end
   end
 
   # GET /messages/new
@@ -37,6 +42,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.user_id = current_user.id
+    @message.channel_id = current_user.channel_times.id
 
     respond_to do |format|
       if @message.save
