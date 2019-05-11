@@ -2,49 +2,53 @@
     <%= image_tag @user.image.square.url, class: 'rounded-circle' if @user.image.present? %>
     <%= @user.name %>
   </h1>
+  <% if user_signed_in? %>
+    <%= link_to 'follow', follow_user_path(@user), method: :put %>
+    <%= link_to 'stop_following', stop_following_user_path(@user), method: :put %>
+    <% if current_user?(@user) %>
+    <%= link_to 'Edit', edit_user_path(@user) %>
+    <%= link_to 'パスワード変更', edit_user_registration_path %>
+    <% end %>
+  <% end %>
+  <%= link_to 'Back', users_path %>
 <hr>
-<h2>Profile</h2>
+<h2 class="h4">Profile</h2>
 <p>
 <%= @user.profile %>
 </p>
-<h2>Follower</h2>
+<% if @user.followers.present? %>
+<h2 class="h4">Follower</h2>
   <% @user.followers.each do |user| %>
     <%= link_to user_path(user) do %>
       <%= image_tag user.image.square.url, class: 'rounded-circle', width: '50px' if user.image.present? %>
     <% end %>
   <% end %>
+<% end %>
 
-<h2>Following</h2>
+<% if @user.following_users.present? %>
+<h2 class="h4">Following</h2>
   <% @user.following_users.each do |user| %>
     <%= link_to user_path(user) do %>
       <%= image_tag user.image.square.url, class: 'rounded-circle', width: '50px' if user.image.present? %>
     <% end %>
   <% end %>
-
-
-<h2>messages</h2>
-<% @user.messages.is_channel_times.order(id: :desc).each do |message| %>
-  <%= md_to_html(message.content) %>
-  <p>
-    <%= link_to message do %>
-      <%= image_tag message.image.middle.url, width: '33%' if message.image.present? %>
-    <% end %>
-  </p>
-  <p>
-    <%= link_to message do %>
-      <%= video_tag message.video.url, width: "33%", controls: true, autobuffer: true if message.video.present? %>
-    <% end %>
-  </p>
-  <%= message.created_at %>
-<hr>
 <% end %>
 
-<% if user_signed_in? %>
-  <%= link_to 'follow', follow_user_path(@user), method: :put %>
-  <%= link_to 'stop_following', stop_following_user_path(@user), method: :put %>
-  <% if current_user?(@user) %>
-  <%= link_to 'Edit', edit_user_path(@user) %>
-  <%= link_to 'パスワード変更', edit_user_registration_path %>
+<% if @user.messages.is_channel_times.present? %>
+<h2 class="h4">messages</h2>
+  <% @user.messages.is_channel_times.order(id: :desc).each do |message| %>
+    <%= md_to_html(message.content) %>
+    <p>
+      <%= link_to message do %>
+        <%= image_tag message.image.middle.url, width: '33%' if message.image.present? %>
+      <% end %>
+    </p>
+    <p>
+      <%= link_to message do %>
+        <%= video_tag message.video.url, width: "33%", controls: true, autobuffer: true if message.video.present? %>
+      <% end %>
+    </p>
+    <%= message.created_at %>
+  <hr>
   <% end %>
 <% end %>
-<%= link_to 'Back', users_path %>
