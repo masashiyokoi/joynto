@@ -6,6 +6,8 @@ class Channel < ApplicationRecord
     project: 3,
   }
 
+  has_many :messages
+
   acts_as_followable
 
   def self.create_direct(users)
