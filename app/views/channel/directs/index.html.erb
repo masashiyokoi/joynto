@@ -1,7 +1,7 @@
 <h1>Direct Messages</h1>
 <hr>
 <% @channels.each do |channel| %>
-  <%= link_to channel_directs_path(channel) do %>
+  <%= link_to channel_direct_messages_path(channel) do %>
     <%= channel.user_followers.pluck(:name).join(',') %>
   <% end %>
   <hr>

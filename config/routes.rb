@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   get 'mypages/show'
   namespace :channel do
     resources :directs do
-      resources :messages, controller: 'channel/directs/messages'
+      resources :messages, controller: 'directs/messages'
     end
   end
   resources :comments

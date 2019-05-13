@@ -1,13 +1,12 @@
 class Channel::Directs::MessagesController < ApplicationController
-  before_action :set_message, only: [:show, :edit, :update, :destroy, :like, :unvote]
+  before_action :set_channel, only: [:index, :create]
 
   def index
-    @channel_directs = current_user.follows_by_type('Channel')
+    @new_message = Message.new
+    @messages = @channel.messages.page(params[:page]).per(24)
   end
 
   def show
-    @new_message = Message.new
-    @messages = Message.where(channel_id: @channel_directs.id)
   end
 
   def new
@@ -20,17 +19,16 @@ class Channel::Directs::MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.user_id = current_user.id
-    @message.channel_id = params[:channel_id]
-    @channel = Channel.find(params[:channel_id])
+    @message.channel_id = @channel.id
     respond_to do |format|
       if @message.save
         @channel.user_followers.where.not(id: current_user.id ).each do |user|
           NotificationMailer.direct_message_to_user(current_user, user).deliver
         end
-        format.html { redirect_to channel_path(@channel), notice: 'message was successfully created.' }
+        format.html { redirect_to channel_direct_messages_path(@channel), notice: 'message was successfully created.' }
         format.json { render :show, status: :created, location: @message }
       else
-        format.html { redirect_to channel_path(@channel), alert: 'message was not successfully created.' }
+        format.html { redirect_to channel_direct_messages_path(@channel), alert: 'message was not successfully created.' }
         format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end
@@ -62,9 +60,8 @@ class Channel::Directs::MessagesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_message
-      @channel = Channel.find(params[:id])
-      @message = message.find(params[:id])
+    def set_channel
+      @channel = Channel.find(params[:direct_id])
     end
 
     def check_current_user
