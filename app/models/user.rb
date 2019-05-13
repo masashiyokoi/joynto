@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   after_create :create_timeline
-  before_save :bulk_send_new_user_announce
+  before_save :check_invitation_user_regist
 
   acts_as_voter
   acts_as_followable
@@ -36,10 +36,15 @@ class User < ApplicationRecord
     )
   end
 
-  def bulk_send_new_user_announce
+  def check_invitation_user_regist
     return unless invitation_accepted_at_changed?
     User.active.each do |u|
       NotificationMailer.new_user_announce(self, u).deliver
     end
+
+    follow invited_by
+    invited_by.follow self
+
+    Channel.create_direct([self, invited_by])
   end
 end
