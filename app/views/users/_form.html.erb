@@ -38,7 +38,7 @@
     <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <p><%= image_tag @user.image.url, width: "300px", id: "img_prev" %></p>
+  <p><%= image_tag @user.image.url || 'noimage.png', width: "300px", id: "img_prev" %></p>
   <div class="input-group">
       <label class="input-group-btn">
           <span class="btn btn-light">
