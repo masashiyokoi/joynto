@@ -26,6 +26,10 @@ class User < ApplicationRecord
     all_following & followers
   end
 
+  def remember_me
+    true
+  end
+
   private
 
   def create_timeline
