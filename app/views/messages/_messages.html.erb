@@ -1,8 +1,8 @@
 <% messages.each do |message| %>
 <div class="row">
+  <%= link_to message do %>
   <div class="col-12 message-content">
-    <%= md_to_html(message.content) %>
-    <%= link_to message do %>
+    <%= truncate(message.content, length: 100) %>
     <p>
       <%= image_tag message.image.middle.url, width: '33%' if message.image.present? %>
     </p>
@@ -10,15 +10,13 @@
       <%= video_tag message.video.url, width: "33%", controls: true, autobuffer: true if message.video.present? %>
     </p>
     <p>
-    <% end %>
-    <%= link_to message do %>
-      <%= message.created_at %>
-    <% end %>
+    <%= message.created_at %>
     <%= link_to user_path(message.user) do %>
       <%= image_tag message.user.image.square.url, class: "profile-img rounded-circle" if message.user.image.present? %>
     <% end %>
     </p>
     <%= render 'messages/vote', message: message %>
+    <% end %>
   </div>
 </div>
 <hr>
