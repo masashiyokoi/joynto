@@ -24,9 +24,7 @@
       <%= image_tag message.user.image.square.url, class: "profile-img rounded-circle" if message.user.image.present? %>
     <% end %>
     </p>
-    <%= link_to message do %>
-    <label><%= render 'messages/vote', message: message %><%= message.created_at %></label>
-    <% end %>
+    <label><%= render 'messages/vote', message: message %><%= link_to message do %><%= message.created_at %><% end %></label>
   </div>
 </div>
 <hr>
