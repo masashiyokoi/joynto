@@ -1,23 +1,29 @@
 <% messages.each do |message| %>
 <div class="row">
   <%= link_to message do %>
-  <div class="col-12 message-content">
+
+  <% if message.image.present? || message.video.present? %>
+  <div class="col-4">
+    <p>
+      <%= image_tag message.image.middle.url, width: '100%' if message.image.present? %>
+    </p>
+    <p>
+      <%= video_tag message.video.url, width: "100%", controls: true, autobuffer: true if message.video.present? %>
+    </p>
+  </div>
+  <% end %>
+  <div class="col-<%= message.image.present? || message.video.present? ? '8' : '12' %> message-content">
     <%= truncate(message.content, length: 100) %>
+  </div>
+  <div class="col-12 message-content">
     <p>
-      <%= image_tag message.image.middle.url, width: '33%' if message.image.present? %>
-    </p>
-    <p>
-      <%= video_tag message.video.url, width: "33%", controls: true, autobuffer: true if message.video.present? %>
-    </p>
-    <p>
-    <%= message.created_at %>
     <%= link_to user_path(message.user) do %>
       <%= image_tag message.user.image.square.url, class: "profile-img rounded-circle" if message.user.image.present? %>
     <% end %>
     </p>
-    <%= render 'messages/vote', message: message %>
-    <% end %>
+    <label><%= render 'messages/vote', message: message %><%= message.created_at %></label>
   </div>
+  <% end %>
 </div>
 <hr>
 <% end %>
