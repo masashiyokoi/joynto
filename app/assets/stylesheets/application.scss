@@ -26,7 +26,7 @@ body {
   line-height: 1.5;
   color: #F0F8FF;
   text-align: left;
-  background-color: #2f0006;
+  background-color: #06040a;
   word-break: break-all;
 }
 
@@ -78,4 +78,21 @@ h1 {
     top: 0; left: 0;
     width: 100%;
     height: 100%;
+}
+
+.brand-name {
+  color: #0a2e44;
+}
+
+.container a {
+  color: #c5e1ff;
+
+  &:visited {
+    color: #666;
+  }
+
+  &:hover {
+    color: #fff;
+    background-color: #000;
+  }
 }
