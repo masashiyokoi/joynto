@@ -57,6 +57,7 @@ gem 'rubocop'
 gem 'rubocop-performance'
 gem 'devise_invitable', '~> 2.0.0'
 gem 'activity_notification'
+gem 'pundit'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
