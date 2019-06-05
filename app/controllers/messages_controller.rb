@@ -5,7 +5,8 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.is_channel_times.page(params[:page]).per(24).order(id: :desc)
+    @q = Message.ransack(params[:q])
+    @messages = @q.result.is_channel_times.page(params[:page]).per(24).order(id: :desc)
     @new_message = Message.new
   end
 
