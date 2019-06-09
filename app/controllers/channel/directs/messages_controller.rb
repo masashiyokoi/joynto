@@ -4,7 +4,7 @@ class Channel::Directs::MessagesController < ApplicationController
 
   def index
     @new_message = Message.new
-    @messages = @channel.messages.page(params[:page]).per(24)
+    @messages = @channel.messages.order(id: :desc).page(params[:page]).per(24)
   end
 
   def show
