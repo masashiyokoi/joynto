@@ -2,4 +2,4 @@
 
 <%= @from_user.name %>さんから、メッセージが届きました。
 
-<%= user_url(@to_user) %>
+<%= channel_direct_messages_url(@direct_message.id) %>
