@@ -1,5 +1,6 @@
 class Channel::Directs::MessagesController < ApplicationController
   before_action :set_channel, only: [:index, :create]
+  before_action :check_current_user, only: [:index, :create]
 
   def index
     @new_message = Message.new
@@ -61,11 +62,11 @@ class Channel::Directs::MessagesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_channel
-      @channel = Channel.find(params[:direct_id])
+      @channel = Channel.direct_message.find(params[:direct_id])
     end
 
     def check_current_user
-      unless @message.user == current_user
+      unless @channel.user_followers.pluck(:id).include? current_user.id
         redirect_to root_path, alert: 'no permission'
       end
     end
