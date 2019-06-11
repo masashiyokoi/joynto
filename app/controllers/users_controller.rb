@@ -74,6 +74,9 @@ class UsersController < ApplicationController
   end
 
   def stop_following
+    if @user.following? current_user
+      Channel.delete_direct([current_user, @user])
+    end
     current_user.stop_following @user
     redirect_to @user, notice: "You stop_following this!"
   end

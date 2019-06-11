@@ -19,4 +19,14 @@ class Channel < ApplicationRecord
       user.follow channel
     end
   end
+
+  def self.delete_direct(users)
+    channel = users[0].following_by_type('Channel').direct_message && users[1].following_by_type('Channel').direct_message.first
+
+    users.each do |user|
+      user.stop_following channel
+    end
+
+    channel.destroy
+  end
 end
