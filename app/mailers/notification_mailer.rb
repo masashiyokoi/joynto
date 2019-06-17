@@ -45,6 +45,18 @@ class NotificationMailer < ApplicationMailer
     end
   end
 
+  def times_message_create(from_user, to_user, message_id)
+    @to_user = to_user
+    @from_user = from_user
+    @message_id = message_id
+    mail(
+      subject: "#{@from_user.name}さんがタイムズメッセージを投稿しました。",
+      to: @to_user.email
+    ) do |format|
+      format.text
+    end
+  end
+
   def new_user_announce(new_user, to_user)
     @new_user = new_user
     @to_user = to_user

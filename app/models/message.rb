@@ -5,6 +5,8 @@ class Message < ApplicationRecord
   belongs_to :user
   belongs_to :channel
 
+  after_create :notify_following_users
+
   acts_as_votable
   acts_as_commentable
 
@@ -14,4 +16,13 @@ class Message < ApplicationRecord
   mount_uploader :video, VideoUploader
 
   scope :is_channel_times, ->() { joins(:channel).where(channels: { kind: :times }) }
+
+  private
+
+  def notify_following_users
+    return unless channel.times?
+    user.following_users.each do |follow_user|
+      NotificationMailer.times_message_create(user, follow_user, id).deliver
+    end
+  end
 end
