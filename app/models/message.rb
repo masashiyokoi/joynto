@@ -21,7 +21,7 @@ class Message < ApplicationRecord
 
   def notify_following_users
     return unless channel.times?
-    user.following_users.each do |follow_user|
+    user.user_followers.each do |follow_user|
       NotificationMailer.times_message_create(user, follow_user, id).deliver
     end
   end
