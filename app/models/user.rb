@@ -9,8 +9,11 @@ class User < ApplicationRecord
   has_many :channel_users
   has_one :channel_times, -> { times }, class_name: 'Channel'
 
-  validates :name, presence: true, uniqueness: true
-
+  validates :name,
+    presence: true,
+    uniqueness: true,
+    length: { maximum: 16 },
+    format: { with: /\A[a-z0-9]+\z/i, message: "Only alphanumeric characters can be used"  }
   after_create :create_timeline
   before_save :check_invitation_user_regist
 
