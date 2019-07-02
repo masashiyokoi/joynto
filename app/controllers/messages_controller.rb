@@ -10,6 +10,10 @@ class MessagesController < ApplicationController
     @new_message = Message.new
   end
 
+  def images
+    @has_image_messages = Message.has_image
+  end
+
   def users
     @messages = Message.is_channel_times.where(user_id: params[:user_id]).page(params[:page]).per(24).order(id: :desc)
     @new_message = Message.new

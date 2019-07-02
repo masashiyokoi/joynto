@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     collection do
       get 'users/:user_id' => 'messages#users', as: 'users'
       get 'followings' => 'messages#followings', as: 'followings'
+      get 'images' => 'messages#images', as: 'images'
     end
   end
   get 'users/sign_up', to: 'messages#index'

@@ -16,6 +16,7 @@ class Message < ApplicationRecord
   mount_uploader :video, VideoUploader
 
   scope :is_channel_times, ->() { joins(:channel).where(channels: { kind: :times }) }
+  scope :has_image, ->() { where.not(image: nil) }
 
   private
 
