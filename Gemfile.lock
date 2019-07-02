@@ -457,6 +457,7 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     retriable (3.1.2)
+    rmagick (3.2.0)
     rubocop (0.67.2)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -578,6 +579,7 @@ DEPENDENCIES
   rails (~> 5.2.0)
   ransack
   redcarpet (~> 2.3.0)
+  rmagick
   rubocop
   rubocop-performance
   sass-rails (~> 5.0)
