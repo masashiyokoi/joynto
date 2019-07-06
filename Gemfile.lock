@@ -51,10 +51,6 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    activity_notification (1.7.1)
-      i18n (>= 0.5.0)
-      jquery-rails (>= 3.1.1)
-      railties (>= 4.2.0, < 5.3)
     acts_as_commentable_with_threading (2.0.1)
       activerecord (>= 4.0)
       activesupport (>= 4.0)
@@ -546,7 +542,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activity_notification
   acts_as_commentable_with_threading
   acts_as_follower!
   acts_as_votable
