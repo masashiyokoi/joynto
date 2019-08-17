@@ -40,6 +40,12 @@
               </form> -->
               <ul class="nav nav-pills nav-stacked flex-column">
                 <% if user_signed_in? %>
+                <li class="nav-header">notification</li>
+                <li class="nav-item">
+                  <%= link_to edit_user_path(current_user), class: "nav-link" do %>
+                   <i class="badge badge-light">4</i>message
+                  <% end %>
+                </li>
                 <li class="nav-header"><%= current_user.name %></li>
                 <li class="nav-item">
                   <%= link_to 'edit profile', edit_user_path(current_user), class: "nav-link" %>
@@ -62,6 +68,10 @@
                 <% end %>
                 <li class="nav-item">
                   <a class="nav-link" href="/messages">all times</a>
+                </li>
+                <li class="nav-header">Tasks</li>
+                <li class="nav-item">
+                  <a class="nav-link " href="/tasks">all tasks</a>
                 </li>
                 <li class="nav-header">Users</li>
                 <li class="nav-item">

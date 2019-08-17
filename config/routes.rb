@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tasks
   resources :emojis
   resources :messages do
     member do
@@ -11,7 +12,6 @@ Rails.application.routes.draw do
       get 'images' => 'messages#images', as: 'images'
     end
   end
-  get 'users/sign_up', to: 'messages#index'
   devise_for :users
   resources :users do
     member do
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       put 'stop_following'  => 'users#stop_following'
     end
   end
+  resources :notifications
   root 'messages#index'
   get 'mypages/index'
   get 'mypages/show'
