@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_17_110729) do
+ActiveRecord::Schema.define(version: 2019_08_18_005913) do
 
   create_table "activities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "trackable_type"
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 2019_08_17_110729) do
     t.integer "importance"
     t.integer "urgency"
     t.integer "status"
+    t.integer "user_id", null: false
     t.datetime "due_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
