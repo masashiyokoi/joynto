@@ -48,7 +48,7 @@ gem 'bootstrap', '>= 4.3.1'
 gem 'jquery-rails'
 gem 'redcarpet', '~> 2.3.0'
 gem 'coderay'
-gem 'mini_magick'
+gem "mini_magick", ">= 4.9.4"
 gem "fog"
 gem 'kaminari'
 gem 'kaminari-bootstrap'
@@ -59,6 +59,7 @@ gem 'devise_invitable', '~> 2.0.0'
 gem 'pundit'
 gem 'ransack'
 gem 'rmagick'
+gem "yard", ">= 0.9.20"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
