@@ -10,6 +10,7 @@ module ApplicationHelper
         autolink:           true,
         no_intra_emphasis:  true,
         fenced_code_blocks: true,
+        tables: true,
       }
 
       renderer = Redcarpet::Render::HTML.new(options)
