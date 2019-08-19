@@ -21,15 +21,18 @@
         <td><%= project.detail %></td>
         <td><%= project.start_datetime %></td>
         <td><%= project.end_datetime %></td>
-        <td><%= project.owner_id %></td>
+        <td><%= link_to project.owner.name, user_path(project.owner) %></td>
         <td><%= link_to 'Show', project %></td>
+        <% if user_signed_in? %>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<% if user_signed_in? %>
 <%= link_to 'New Project', new_project_path %>
+<% end %>

@@ -24,6 +24,7 @@
   <strong>Owner:</strong>
   <%= @project.owner_id %>
 </p>
-
+<% if user_signed_in? %>
 <%= link_to 'Edit', edit_project_path(@project) %> |
+<% end %>
 <%= link_to 'Back', projects_path %>
