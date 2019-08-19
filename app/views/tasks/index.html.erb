@@ -14,6 +14,7 @@
       <th>Status</th>
       <th>Due date</th>
       <th>User</th>
+      <th>Project</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -33,6 +34,9 @@
           <%= link_to user_path(task.user) do %>
             <%= image_tag task.user.image.square.url, class: "img-icon rounded-circle" if task.user.image.present? %>
           <% end %>
+        </td>
+        <td>
+          <%= link_to task.project.title, project_path(task.project) %>
         </td>
         <% if user_signed_in? %>
         <td><%= link_to 'Show', task %></td>
