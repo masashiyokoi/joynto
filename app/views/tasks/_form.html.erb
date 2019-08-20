@@ -43,7 +43,7 @@
 
   <div class="field">
     <%= form.label :status %>
-    <%= form.number_field :status %>
+    <%= form.select :status, Task.statuses.keys.map {|k| [k, k]} %>
   </div>
 
   <div class="field">
