@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Title</th>
+      <th>Image</th>
       <th>Detail</th>
       <th>Start datetime</th>
       <th>End datetime</th>
@@ -18,6 +19,7 @@
     <% @projects.each do |project| %>
       <tr>
         <td><%= project.title %></td>
+        <td><%= image_tag project.image.square.url if project.image.present? %></td>
         <td><%= project.detail %></td>
         <td><%= project.start_datetime %></td>
         <td><%= project.end_datetime %></td>
