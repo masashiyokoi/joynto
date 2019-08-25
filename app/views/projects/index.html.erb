@@ -7,7 +7,6 @@
     <tr>
       <th>Title</th>
       <th>Image</th>
-      <th>Detail</th>
       <th>Start datetime</th>
       <th>End datetime</th>
       <th>Owner</th>
@@ -20,10 +19,13 @@
       <tr>
         <td><%= project.title %></td>
         <td><%= image_tag project.image.square.url if project.image.present? %></td>
-        <td><%= project.detail %></td>
         <td><%= project.start_datetime %></td>
         <td><%= project.end_datetime %></td>
-        <td><%= link_to project.owner.name, user_path(project.owner) %></td>
+        <td>
+          <%= link_to user_path(project.owner) do %>
+            <%= image_tag project.owner.image.square.url, class: "img-icon rounded-circle" if project.owner.image.present? %>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', project %></td>
         <% if user_signed_in? %>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
