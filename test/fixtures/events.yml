@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  caption: MyString
+  detail: MyText
+  url: MyText
+  project_id: 1
+  owner_id: 1
+  start_datetime: 2019-08-29 09:06:09
+  end_datetime: 2019-08-29 09:06:09
+
+two:
+  caption: MyString
+  detail: MyText
+  url: MyText
+  project_id: 1
+  owner_id: 1
+  start_datetime: 2019-08-29 09:06:09
+  end_datetime: 2019-08-29 09:06:09

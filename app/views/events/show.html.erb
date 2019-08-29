@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Caption:</strong>
+  <%= @event.caption %>
+</p>
+
+<p>
+  <strong>Detail:</strong>
+  <%= @event.detail %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @event.url %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @event.project_id %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @event.owner_id %>
+</p>
+
+<p>
+  <strong>Start datetime:</strong>
+  <%= @event.start_datetime %>
+</p>
+
+<p>
+  <strong>End datetime:</strong>
+  <%= @event.end_datetime %>
+</p>
+<% if user_signed_in? %>
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<% end %>
+<%= link_to 'Back', events_path %>

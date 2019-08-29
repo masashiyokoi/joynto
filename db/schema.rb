@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_19_122002) do
+ActiveRecord::Schema.define(version: 2019_08_29_000609) do
 
   create_table "activities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "trackable_type"
@@ -66,6 +66,18 @@ ActiveRecord::Schema.define(version: 2019_08_19_122002) do
     t.string "name"
     t.string "image"
     t.string "vote_scope"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "caption"
+    t.text "detail"
+    t.text "url"
+    t.integer "project_id"
+    t.integer "owner_id"
+    t.datetime "start_datetime"
+    t.datetime "end_datetime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
