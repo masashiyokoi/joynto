@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @q = Project.search(params[:q])
+    @q = Project.order(:end_datetime).search(params[:q])
     @projects = @q.result
   end
 

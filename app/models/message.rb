@@ -1,9 +1,8 @@
 class Message < ApplicationRecord
-  include PublicActivity::Model
-  tracked
 
   belongs_to :user
   belongs_to :channel
+  has_many :notifications, as: :notifiable
 
   after_create :notify_following_users
 
