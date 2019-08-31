@@ -17,12 +17,16 @@
 
 <p>
   <strong>Project:</strong>
-  <%= @event.project_id %>
+  <%= link_to project_path(@event.project) do %>
+    <%= image_tag @event.project.image.square.url, class: "img-icon rounded-circle" if @event.project.image.present? %>
+  <% end %>
 </p>
 
 <p>
   <strong>Owner:</strong>
-  <%= @event.owner_id %>
+  <%= link_to user_path(@event.owner) do %>
+    <%= image_tag @event.owner.image.square.url, class: "img-icon rounded-circle" if @event.owner.image.present? %>
+  <% end %>
 </p>
 
 <p>

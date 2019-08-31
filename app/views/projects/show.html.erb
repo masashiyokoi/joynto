@@ -27,7 +27,9 @@
 
 <p>
   <strong>Owner:</strong>
-  <%= @project.owner_id %>
+  <%= link_to user_path(@project.owner) do %>
+    <%= image_tag @project.owner.image.square.url, class: "img-icon rounded-circle" if @project.owner.image.present? %>
+  <% end %>
 </p>
 <% if user_signed_in? %>
 <%= link_to 'Edit', edit_project_path(@project) %> |
