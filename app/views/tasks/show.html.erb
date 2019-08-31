@@ -42,7 +42,9 @@
 
 <p>
   <strong>Project:</strong>
-  <%= @task.project.title %>
+  <%= link_to user_path(@task.project) do %>
+    <%= image_tag @task.project.image.square.url, class: "img-icon rounded-circle" if @task.project.image.present? %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |

@@ -4,7 +4,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @q = Event.search(params[:q])
+    @events = @q.result
   end
 
   # GET /events/1
