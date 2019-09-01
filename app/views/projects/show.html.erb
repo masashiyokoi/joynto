@@ -12,7 +12,9 @@
 
 <p>
   <strong>Detail:</strong>
-  <%= @project.detail %>
+  <p>
+    <%= md_to_html(@project.detail) %>
+  </p>
 </p>
 
 <p>
