@@ -46,6 +46,7 @@ gem 'public_activity'
 gem 'carrierwave', '~> 1.0'
 gem 'bootstrap', '>= 4.3.1'
 gem 'jquery-rails'
+gem 'simple_calendar', '~> 2.0'
 gem 'redcarpet', '~> 2.3.0'
 gem 'coderay'
 gem "mini_magick", ">= 4.9.4"
