@@ -26,7 +26,7 @@
               <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(block) %>
                 <% capture_haml(day, sorted_events.fetch(day, []), &block) %>
               <% else %>
-                <% block.call day, sorted_events.fetch(day, []) %>
+                <% block.call day.day, sorted_events.fetch(day, []) %>
               <% end %>
             <% end %>
           <% end %>
