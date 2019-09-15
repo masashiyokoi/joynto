@@ -27,7 +27,7 @@ body {
   line-height: 1.5;
   color: #F0F8FF;
   text-align: left;
-  background-color: #06040a;
+  background-color: #050425;
   word-break: break-all;
 }
 
@@ -112,4 +112,12 @@ h1 {
 
 .form-control {
   background-color: #2d2929eb;
+}
+
+.simple-calendar .prev-month {
+  background: black;
+}
+
+.simple-calendar .next-month {
+  background: black;
 }
