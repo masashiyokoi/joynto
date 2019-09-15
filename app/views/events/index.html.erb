@@ -46,7 +46,7 @@
 
   <% events.each do |event| %>
     <div>
-      <%= event.caption %>
+      <%= link_to event.caption, event_path(event) %>
     </div>
   <% end %>
 <% end %>
