@@ -121,3 +121,18 @@ h1 {
 .simple-calendar .next-month {
   background: black;
 }
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border: 1px solid #1e4265;
+}
+
+.table {
+  color: #1e4265;
+}
+
+.simple-calendar .today {
+    background: #7b97de77;
+}
