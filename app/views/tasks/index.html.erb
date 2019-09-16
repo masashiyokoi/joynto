@@ -24,7 +24,7 @@
           <% end %>
         </td>
         <td>
-          <%= link_to user_path(task.project) do %>
+          <%= link_to project_path(task.project) do %>
             <%= image_tag task.project.image.square.url, class: "img-icon rounded-circle" if task.project.image.present? %>
           <% end %>
         </td>
