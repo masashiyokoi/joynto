@@ -27,7 +27,7 @@ class NotificationMailer < ApplicationMailer
     @to_user = to_user
     @from_user = from_user
     mail(
-      subject: "#{@from_user.name}さんから、メッセージが届いています。",
+      subject: "[direct message][#{@from_user.name}]",
       to: @to_user.email
     ) do |format|
       format.text
@@ -50,7 +50,7 @@ class NotificationMailer < ApplicationMailer
     @from_user = from_user
     @message_id = message_id
     mail(
-      subject: "#{@from_user.name}さんがタイムズメッセージを投稿しました。",
+      subject: "[times message][#{@from_user.name}]",
       to: @to_user.email
     ) do |format|
       format.text
@@ -61,7 +61,7 @@ class NotificationMailer < ApplicationMailer
     @new_user = new_user
     @to_user = to_user
     mail(
-      subject: "新規ユーザーの方が登録されました。",
+      subject: "[new user]",
       to: @to_user.email
     ) do |format|
       format.text
