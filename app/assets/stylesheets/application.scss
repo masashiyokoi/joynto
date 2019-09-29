@@ -14,10 +14,10 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "theme-dashboard.scss";
-@import "bootstrap";
+@import "tempusdominus-bootstrap-4.css";
 
 body {
   margin: 0;
