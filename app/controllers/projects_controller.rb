@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @q = Project.order(:end_datetime).search(params[:q])
+    @q = Project.not_completed.order(:end_datetime).search(params[:q])
     @projects = @q.result
   end
 
@@ -70,6 +70,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:title, :detail, :start_datetime, :end_datetime, :owner_id, :image)
+      params.require(:project).permit(:title, :detail, :start_datetime, :end_datetime, :owner_id, :image, :status)
     end
 end
