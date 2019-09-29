@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @q = Event.order(:start_time).search(params[:q])
+    @q = Event.before_start.order(:start_time).search(params[:q])
     @events = @q.result
   end
 
