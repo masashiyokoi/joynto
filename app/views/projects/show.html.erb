@@ -33,6 +33,12 @@
     <%= image_tag @project.owner.image.square.url, class: "img-icon rounded-circle" if @project.owner.image.present? %>
   <% end %>
 </p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @project.status %>
+</p>
+
 <% if user_signed_in? %>
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <% end %>
