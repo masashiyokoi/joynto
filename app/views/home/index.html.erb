@@ -1,20 +1,24 @@
 <div class="col-12">
   <h2 class="h3">new projects</h2>
-  <% @project_activities.each do |activity| %>
-    <p>
-    <%= link_to project_path(activity.trackable) do %>
-      <%= image_tag activity.trackable.image.square.url, class: "profile-img rounded-circle" if activity.trackable.image.present? %>
-      <%= activity.trackable.title %>
-    <% end %>
-    </p>
-  <% end %>
+  <table>
+    <tbody>
+      <% @project_activities.each do |activity| %>
+        <tr>
+          <td><%= image_tag activity.trackable.image.square_mini.url if activity.trackable.image.present? %></td>
+          <td><%= link_to project_path(activity.trackable) do %><%= activity.trackable.title %><% end %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
   <h2 class="h3">new events</h2>
-  <% @event_activities.each do |event| %>
-    <p>
-    <%= link_to project_path(event.trackable) do %>
-      <%= image_tag event.trackable.image.square.url, class: "profile-img rounded-circle" if event.trackable.image.present? %>
-      <%= event.trackable.title %>
-    <% end %>
-    </p>
-  <% end %>
+  <table>
+    <tbody>
+      <% @event_activities.each do |activity| %>
+        <tr>
+          <td><%= link_to event_path(activity.trackable) do %><%= activity.trackable.caption %><% end %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
