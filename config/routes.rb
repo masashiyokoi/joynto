@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
   end
   resources :notifications
-  root 'messages#index'
+  root 'home#index'
   get 'mypages/index'
   get 'mypages/show'
   namespace :channel do

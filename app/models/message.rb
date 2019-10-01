@@ -1,5 +1,5 @@
 class Message < ApplicationRecord
-
+  include PublicActivity::Model
   belongs_to :user
   belongs_to :channel
   has_many :notifications, as: :notifiable
@@ -8,6 +8,7 @@ class Message < ApplicationRecord
 
   acts_as_votable
   acts_as_commentable
+  tracked
 
   validates :user_id, presence: true
 

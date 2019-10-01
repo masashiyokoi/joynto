@@ -1,6 +1,10 @@
 class Project < ApplicationRecord
+  include PublicActivity::Model
+
   belongs_to :owner, class_name: 'User'
   has_many :tasks
+
+  tracked
 
   enum status: { ready: 1, doing: 2, completed: 10 }
 
