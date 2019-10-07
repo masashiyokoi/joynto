@@ -38,12 +38,12 @@
 
   <div class="field">
     <%= form.label :start_time %>
-    <%= form.text_field :start_time, class: "form-control datetimepicker", id: "start_time", data: {toggle: "datetimepicker", target: "#start_time"} %>
+    <%= form.text_field :start_time, end_year: Date.today.year + 100, class: "form-control datetimepicker", id: "start_time", data: {toggle: "datetimepicker", target: "#start_time"} %>
   </div>
 
   <div class="field">
     <%= form.label :end_datetime %>
-    <%= form.text_field :end_datetime, class: "form-control datetimepicker", id: "end_datetime", data: {toggle: "datetimepicker", target: "#end_datetime"} %>
+    <%= form.text_field :end_datetimee, end_year: Date.today.year + 100, class: "form-control datetimepicker", id: "end_datetime", data: {toggle: "datetimepicker", target: "#end_datetime"} %>
   </div>
 
   <div class="actions">
