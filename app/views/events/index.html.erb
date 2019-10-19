@@ -39,6 +39,11 @@
     <% end %>
   </tbody>
 </table>
+<% if Advertisement.first %>
+<%= link_to Advertisement.first.link, target: "_blank" do %>
+  <%= image_tag Advertisement.first.image %>
+  <% end %>
+<% end %>
 
 <br>
 <%= month_calendar events: @events do |date, events| %>

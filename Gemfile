@@ -39,6 +39,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # Devise
 gem 'devise', '>= 4.6'
+gem 'activeadmin'
 
 gem 'acts_as_votable'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'

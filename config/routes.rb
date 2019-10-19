@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :sponsors, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   resources :events
   resources :projects
   resources :tasks
