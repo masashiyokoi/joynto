@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   def index
     @q = Project.not_completed.order(:end_datetime).search(params[:q])
     @projects = @q.result
+    @projects_completed = Project.completed.order(:end_datetime)
   end
 
   # GET /projects/1
