@@ -5,8 +5,8 @@
     <tr>
       <th><%= sort_link(@q, :title) %></th>
       <th><%= sort_link(@q, :image) %></th>
-      <th><%= sort_link(@q, :start_datetime) %></th>
-      <th><%= sort_link(@q, :end_datetime) %></th>
+      <th><%= sort_link(@q, :start) %></th>
+      <th><%= sort_link(@q, :end) %></th>
       <th><%= sort_link(@q, :owner_name, 'Owner') %></th>
       <th><%= sort_link(@q, :stats) %></th>
       <th colspan="3"></th>
@@ -18,8 +18,8 @@
       <tr>
         <td><%= project.title %></td>
         <td><%= image_tag project.image.square_mini.url if project.image.present? %></td>
-        <td><%= project.start_datetime %></td>
-        <td><%= project.end_datetime %></td>
+        <td><%= project.start_datetime.strftime('%Y/%m/%d') %></td>
+        <td><%= project.end_datetime.strftime('%Y/%m/%d') %></td>
         <td>
           <%= link_to user_path(project.owner) do %>
             <%= image_tag project.owner.image.square.url, class: "img-icon rounded-circle" if project.owner.image.present? %>
@@ -49,8 +49,8 @@
     <tr>
       <th>title</th>
       <th>image</th>
-      <th>start_datetime</th>
-      <th>end_datetime</th>
+      <th>start</th>
+      <th>end</th>
       <th>owner_name</th>
       <th>stats</th>
       <th colspan="3"></th>
@@ -62,8 +62,8 @@
       <tr>
         <td><%= project.title %></td>
         <td><%= image_tag project.image.square_mini.url if project.image.present? %></td>
-        <td><%= project.start_datetime %></td>
-        <td><%= project.end_datetime %></td>
+        <td><%= project.start_datetime.strftime('%Y/%m/%d') %></td>
+        <td><%= project.end_datetime.strftime('%Y/%m/%d') %></td>
         <td>
           <%= link_to user_path(project.owner) do %>
             <%= image_tag project.owner.image.square.url, class: "img-icon rounded-circle" if project.owner.image.present? %>
