@@ -6,6 +6,7 @@ class EventsController < ApplicationController
   def index
     @q = Event.before_start.order(:start_time).search(params[:q])
     @events = @q.result
+    @events_finished = Event.finished
   end
 
   # GET /events/1
