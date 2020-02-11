@@ -2,7 +2,7 @@
   <h2 class="h3">new projects</h2>
   <table class="table">
     <tbody>
-      <% @project_activities.each do |activity| %>
+      <% @project_activities.limit(5).each do |activity| %>
         <tr>
           <td><%= image_tag activity.trackable.image.square_mini.url if activity.trackable.image.present? %></td>
           <td><%= link_to project_path(activity.trackable) do %><%= activity.trackable.title %> <small><%= activity.trackable.created_at %></small><% end %></td>
@@ -14,7 +14,7 @@
   <h2 class="h3">new events</h2>
   <table class="table">
     <tbody>
-      <% @event_activities.each do |activity| %>
+      <% @event_activities.limit(5).each do |activity| %>
         <tr>
           <td><%= link_to event_path(activity.trackable) do %><%= activity.trackable.caption %> <small><%= activity.trackable.created_at %></small><% end %></td>
         </tr>
@@ -25,7 +25,7 @@
   <h2 class="h3">new message</h2>
   <table class="table">
     <tbody>
-      <% @message_activities.each do |activity| %>
+      <% @message_activities.limit(20).each do |activity| %>
         <tr>
           <td>
             <%= link_to message_path(activity.trackable) do %>
