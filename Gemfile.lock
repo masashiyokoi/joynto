@@ -119,6 +119,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
+    connection_pool (2.2.2)
     crass (1.0.6)
     declarative (0.0.10)
     declarative-option (0.1.0)
@@ -480,6 +481,12 @@ GEM
       json (>= 1.8)
       nokogiri (~> 1.5)
       optimist (~> 3.0)
+    react_on_rails (11.3.0)
+      addressable
+      connection_pool
+      execjs (~> 2.5)
+      rails (>= 3.2)
+      rainbow (~> 3.0)
     redcarpet (2.3.0)
     regexp_parser (1.6.0)
     representable (3.0.4)
@@ -618,6 +625,7 @@ DEPENDENCIES
   rails (~> 5.2.0)
   rails-erd
   ransack
+  react_on_rails
   redcarpet (~> 2.3.0)
   rmagick
   rubocop
