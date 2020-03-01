@@ -24,6 +24,7 @@ class Channel::Directs::MessagesController < ApplicationController
     respond_to do |format|
       if @message.save
         @channel.user_followers.where.not(id: current_user.id ).each do |user|
+          @message.notifications.create(target_id: user.id, target_type: 'User')
           NotificationMailer.direct_message_to_user(current_user, user).deliver
         end
         format.html { redirect_to channel_direct_messages_path(@channel), notice: 'message was successfully created.' }

@@ -42,8 +42,11 @@
                 <% if user_signed_in? %>
                 <li class="nav-header">notification</li>
                 <li class="nav-item">
-                  <%= link_to edit_user_path(current_user), class: "nav-link" do %>
-                   <i class="badge badge-light">4</i>message
+                  <%= link_to channel_directs_path, class: "nav-link" do %>
+                   <% if @notifications.present? %>
+                   <i class="badge badge-light"><%= @notifications.count %></i>
+                   <% end %>
+                   message
                   <% end %>
                 </li>
                 <li class="nav-header"><%= current_user.name %></li>
