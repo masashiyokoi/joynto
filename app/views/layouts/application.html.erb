@@ -43,8 +43,8 @@
                 <li class="nav-header">notification</li>
                 <li class="nav-item">
                   <%= link_to channel_directs_path, class: "nav-link" do %>
-                   <% if @notifications.present? %>
-                   <i class="badge badge-light"><%= @notifications.count %></i>
+                   <% if current_user.notifications.present? %>
+                   <i class="badge badge-light"><%= current_user.notifications.count %></i>
                    <% end %>
                    message
                   <% end %>
