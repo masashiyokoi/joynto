@@ -11,6 +11,8 @@ class Message < ApplicationRecord
   tracked
 
   validates :user_id, presence: true
+  validates :channel_id, presence: true
+  validates :content, presence: true
 
   mount_uploader :image, ImageUploader
   mount_uploader :video, VideoUploader
