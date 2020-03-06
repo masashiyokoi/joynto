@@ -1,18 +1,14 @@
 <div class="col-12">
-  <h2 class="h3">new message</h2>
-  <table class="table">
-    <tbody>
-      <% @messages.limit(20).each do |message| %>
-        <tr>
-          <td>
-            <%= link_to message_path(message) do %>
-              <%= truncate(message.content, length: 30) %> <small><%= message.created_at %></small>
-            <% end %>
-          </td>
-        </tr>
+  <h2 class="h3">new times messages</h2>
+      <% @messages.limit(10).each do |message| %>
+      <div>
+        <%= link_to message_path(message) do %>
+          <%= truncate(message.content, length: 30) %> <small><%= message.created_at %></small>
+        <% end %>
+      </div>
+      <hr style="background-color: white;">
       <% end %>
-    </tbody>
-  </table>
+      <a href="/messages">all messages</a>
   <h2 class="h3">new projects</h2>
   <table class="table">
     <tbody>
