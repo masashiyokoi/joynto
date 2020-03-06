@@ -1,14 +1,8 @@
 <div class="col-12">
   <h2 class="h3">new times messages</h2>
-      <% @messages.limit(10).each do |message| %>
-      <div>
-        <%= link_to message_path(message) do %>
-          <%= truncate(message.content, length: 30) %> <small><%= message.created_at %></small>
-        <% end %>
-      </div>
-      <hr style="background-color: white;">
-      <% end %>
-      <a href="/messages">all messages</a>
+    <% @messages.each do |message| %>
+      <%= link_to message_path(message) do %><%= image_tag message.image.middle.url, width: '150px' if message.image.present? %><% end %>
+    <% end %>
   <h2 class="h3">new projects</h2>
   <table class="table">
     <tbody>
