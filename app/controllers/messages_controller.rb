@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
   end
 
   def images
-    @has_image_messages = Message.has_image
+    @has_image_messages = Message.has_image.order(id: :desc)
   end
 
   def users
