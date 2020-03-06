@@ -9,7 +9,4 @@
 </div>
 <% end %>
 <hr>
-<% if user_signed_in? %>
-<%= render 'form', message: @new_message %>
-<% end %>
 <%= render 'messages', messages: @messages %>
