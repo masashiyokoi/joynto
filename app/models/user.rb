@@ -45,14 +45,19 @@ class User < ApplicationRecord
   end
 
   def check_invitation_user_regist
-    return unless confirmed_at_changed?
-    User.active.each do |u|
-      NotificationMailer.new_user_announce(self, u).deliver
-    end
+    return unless invitation_accepted_at_changed? || confirmed_at_changed?
+    send_mail_to_existing_users
+    return unless invitation_accepted_at_changed?
 
     follow invited_by
     invited_by.follow self
 
     Channel.create_direct([self, invited_by])
+  end
+
+  def send_mail_to_existing_users
+    User.active.each do |u|
+      NotificationMailer.new_user_announce(self, u).deliver
+    end
   end
 end
