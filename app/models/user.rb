@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :timeoutable
+         :timeoutable, :confirmable
 
   has_many :messages
   has_many :channel_users
@@ -45,7 +45,7 @@ class User < ApplicationRecord
   end
 
   def check_invitation_user_regist
-    return unless invitation_accepted_at_changed?
+    return unless confirmed_at_changed?
     User.active.each do |u|
       NotificationMailer.new_user_announce(self, u).deliver
     end
