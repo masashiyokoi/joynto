@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   resources :events
   resources :projects
   resources :tasks
-  resources :emojis
   resources :messages do
     member do
       put 'like'    => 'messages#like'
