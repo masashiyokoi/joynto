@@ -6,7 +6,6 @@ class User < ApplicationRecord
          :timeoutable, :confirmable
 
   has_many :messages
-  has_many :channel_users
   has_many :notifications, as: :target
   has_one :channel_times, -> { times }, class_name: 'Channel'
 

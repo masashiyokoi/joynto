@@ -1,0 +1,5 @@
+<% @has_image_messages.each do |message| %>
+  <p>
+    <%= image_tag message.image.middle.url, width: '300px' if message.image.present? %>
+  </p>
+<% end %>

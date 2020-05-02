@@ -1,0 +1,32 @@
+<% words.each do |word| %>
+<div class="row">
+  <% if word.image.present? || word.video.present? %>
+  <div class="col-3">
+    <%= link_to word do %>
+
+    <p>
+      <%= image_tag word.image.middle.url, width: '100%' if word.image.present? %>
+    </p>
+    <p>
+      <%= video_tag word.video.url, width: "100%", controls: true, autobuffer: true if word.video.present? %>
+    </p>
+    <% end %>
+  </div>
+  <% end %>
+  <div class="col-<%= word.image.present? || word.video.present? ? '9' : '12' %> word-content">
+    <%= link_to word do %>
+    <%= truncate(word.content, length: 100) %>
+    <% end %>
+  </div>
+  <div class="col-12 word-content">
+    <p>
+    <%= link_to user_path(word.user) do %>
+      <%= image_tag word.user.image.square.url, class: "profile-img rounded-circle" if word.user.image.present? %>
+    <% end %>
+    </p>
+    <label><%= render 'words/vote', word: word %><%= link_to word do %><%= word.created_at %><% end %></label>
+  </div>
+</div>
+<hr>
+<% end %>
+<%= paginate words %>
