@@ -27,15 +27,4 @@
       <% end %>
     </tbody>
   </table>
-
-  <h2 class="h3">new events</h2>
-  <table class="table">
-    <tbody>
-      <% @event_activities.limit(5).each do |activity| %>
-        <tr>
-          <td><%= link_to event_path(activity.trackable) do %><%= activity.trackable.caption %> <small><%= activity.trackable.created_at %></small><% end %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
 </div>

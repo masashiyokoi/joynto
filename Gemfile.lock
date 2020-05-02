@@ -66,6 +66,9 @@ GEM
       activerecord (>= 4.0)
       activesupport (>= 4.0)
       awesome_nested_set (>= 3.0)
+    acts_as_tenant (0.4.4)
+      rails (>= 4.0)
+      request_store (>= 1.0.5)
     acts_as_votable (0.12.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
@@ -493,6 +496,8 @@ GEM
       declarative (< 0.1.0)
       declarative-option (< 0.2.0)
       uber (< 0.2.0)
+    request_store (1.5.0)
+      rack (>= 1.4)
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -594,6 +599,7 @@ DEPENDENCIES
   activeadmin
   acts_as_commentable_with_threading
   acts_as_follower!
+  acts_as_tenant
   acts_as_votable
   bootsnap (>= 1.1.0)
   bootstrap (>= 4.3.1)

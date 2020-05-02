@@ -64,6 +64,7 @@ gem 'rmagick'
 gem "yard", ">= 0.9.20"
 gem "bootstrap4-datetime-picker-rails"
 gem 'react_on_rails'
+gem 'acts_as_tenant'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

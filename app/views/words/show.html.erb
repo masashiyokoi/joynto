@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <%= md_to_html(@word.name) %>
+</p>
+<p>
+  <%= md_to_html(@word.description) %>
+</p>
+<p>
+  <%= link_to user_path(@word.user) do %>
+    <%= image_tag @word.user.image.square.url, class: 'rounded-circle', width: '50px' if @word.user.image.present? %>
+  <% end %>
+
+<%= @word.created_at %>
+</p>
+<%= render 'vote', word: @word %>
+<hr>
+<p>
+<% if user_signed_in? %>
+  <%= link_to 'bolt!', like_word_path(@word), method: :put %>
+  <%= link_to 'unvote', unvote_word_path(@word), method: :put %>
+  <% if current_user?(@word.user) %>
+  <%= link_to 'Edit', edit_word_path(@word) %>
+  <%= link_to 'Destroy', @word, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+<% end %>
+<%= link_to 'Back', words_path %>
+</p>
+<%= render partial: "comments/template", locals: {commentable: @word, new_comment: @comment} %>
