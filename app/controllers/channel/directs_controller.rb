@@ -2,7 +2,7 @@ class Channel::DirectsController < ApplicationController
   before_action :set_channel, only: [:show, :edit, :update, :destroy]
 
   def index
-    @channels = current_user.following_by_type('Channel::DirectMessage')
+    @channels = current_user.following_by_type('Channel')
   end
 
   def show

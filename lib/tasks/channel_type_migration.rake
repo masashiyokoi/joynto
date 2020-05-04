@@ -28,4 +28,12 @@ namespace :channel_type_migration do
       end
     end
   end
+
+  task fix: :environment do
+    Follow.all.each do |follow|
+      if follow.followable_type == 'DirectMessage'
+        follow.update(followable_type: 'Channel')
+      end
+    end
+  end
 end

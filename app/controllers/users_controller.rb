@@ -65,7 +65,7 @@ class UsersController < ApplicationController
 
     if @user.following? current_user
 
-      Channel::DirectMessage.create_direct([current_user, @user])
+      Channel::DirectMessage.create_follows([current_user, @user])
 
       NotificationMailer.direct_message_create(current_user, @user).deliver
     end
@@ -75,7 +75,7 @@ class UsersController < ApplicationController
 
   def stop_following
     if @user.following? current_user
-      Channel::DirectMessage.delete_direct([current_user, @user])
+      Channel::DirectMessage.delete_follows([current_user, @user])
     end
     current_user.stop_following @user
     redirect_to @user, notice: "You stop_following this!"

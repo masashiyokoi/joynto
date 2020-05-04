@@ -50,7 +50,7 @@ class User < ApplicationRecord
     follow invited_by
     invited_by.follow self
 
-    Channel::DirectMessage.create_direct([self, invited_by])
+    Channel::DirectMessage.create_follows([self, invited_by])
   end
 
   def send_mail_to_existing_users

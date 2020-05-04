@@ -23,7 +23,7 @@ class NotificationMailer < ApplicationMailer
   end
 
   def direct_message_to_user(from_user, to_user)
-    @direct_message = from_user.following_by_type('Channel::DirectMessage') && to_user.following_by_type('Channel::DirectMessage').first
+    @direct_message = from_user.following_by_type('Channel') && to_user.following_by_type('Channel').first
     @to_user = to_user
     @from_user = from_user
     mail(
