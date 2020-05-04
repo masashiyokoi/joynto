@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :messages
   has_many :notifications, as: :target
+  has_many :projects, foreign_key: :owner_id
   has_one :channel_times, -> { times }, class_name: 'Channel::times'
 
   validates :name,

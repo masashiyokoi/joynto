@@ -26,6 +26,18 @@
   <% end %>
 <% end %>
 
+<% if @user.projects.present? %>
+<h2 class="h4">Projects</h2>
+  <% @user.projects.each do |project| %>
+    <%= link_to project_path(project) do %>
+      <td><%= project.title %></td>
+      <%= image_tag project.owner.image.square.url, class: "img-icon rounded-circle" if project.owner.image.present? %>
+      <td><%= project.start_datetime.strftime('%Y/%m/%d') %></td>
+      <td><%= project.end_datetime.strftime('%Y/%m/%d') %></td>
+    <% end %>
+  <% end %>
+<% end %>
+
 <% if @user.following_users.present? %>
 <h2 class="h4">Following</h2>
   <% @user.following_users.each do |user| %>
