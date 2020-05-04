@@ -4,7 +4,7 @@ class NotificationMailer < ApplicationMailer
     @user = to_user
     @from_user = from_user
     mail(
-      subject: "タイムラインに、いいねがされました。",
+      subject: "New vote to your times",
       to: @user.email
     ) do |format|
       format.text
@@ -15,7 +15,7 @@ class NotificationMailer < ApplicationMailer
     @to_user = to_user
     @from_user = from_user
     mail(
-      subject: "#{@from_user.name}さんから、フォローされました。",
+      subject: "new follower",
       to: @to_user.email
     ) do |format|
       format.text
@@ -38,7 +38,7 @@ class NotificationMailer < ApplicationMailer
     @to_user = to_user
     @from_user = from_user
     mail(
-      subject: "#{@from_user.name}さんとのダイレクトメッセージが可能になりました。",
+      subject: "New direct relation",
       to: @to_user.email
     ) do |format|
       format.text
