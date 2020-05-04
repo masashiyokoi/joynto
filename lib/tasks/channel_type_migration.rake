@@ -27,18 +27,5 @@ namespace :channel_type_migration do
         end
       end
     end
-
-    PublicActivity::Activity.all.each do |activity|
-      if activity.trackable_type == 'Channel'
-        case activity.trackable.kind
-        when 1
-          follow.update(trackable_type: 'Channel::times')
-        when 2
-          follow.update(trackable_type: 'Channel::DirectMessage')
-        when 3
-          follow.update(trackable_type: 'Channel::Projects')
-        end
-      end
-    end
   end
 end
