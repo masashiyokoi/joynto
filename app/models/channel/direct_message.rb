@@ -8,7 +8,7 @@ class Channel::DirectMessage < Channel
   end
 
   def self.delete_direct(users)
-    channel = users[0].following_by_type('Channel::direct_message').direct_message && users[1].following_by_type('Channel::direct_message').direct_message.first
+    channel = users[0].following_by_type('Channel::direct_message') && users[1].following_by_type('Channel::direct_message').first
 
     users.each do |user|
       user.stop_following channel
