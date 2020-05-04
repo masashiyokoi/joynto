@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   has_many :messages
   has_many :notifications, as: :target
-  has_one :channel_times, -> { times }, class_name: 'Channel'
+  has_one :channel_times, -> { times }, class_name: 'Channel::times'
 
   validates :name,
     presence: true,
@@ -37,8 +37,7 @@ class User < ApplicationRecord
 
   def create_timeline
     return if channel_times
-    channel = Channel.create(
-      kind: :times,
+    channel = Channel::Times.create(
       user_id: id
     )
   end
@@ -51,7 +50,7 @@ class User < ApplicationRecord
     follow invited_by
     invited_by.follow self
 
-    Channel.create_direct([self, invited_by])
+    Channel::DirectMessage.create_direct([self, invited_by])
   end
 
   def send_mail_to_existing_users

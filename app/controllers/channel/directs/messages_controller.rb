@@ -63,7 +63,7 @@ class Channel::Directs::MessagesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_channel
-      @channel = Channel.direct_message.find(params[:direct_id])
+      @channel = Channel::DirectMessage.find(params[:direct_id])
     end
 
     def check_current_user
