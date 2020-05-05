@@ -36,7 +36,7 @@
           <%= project.title %>
           <%= project.start_datetime.strftime('%Y/%m/%d') %>
           <%= project.end_datetime.strftime('%Y/%m/%d') %>
-          <%= image_tag project.image.square.url, class: "img-icon" if project.image.present? %>
+          <%= image_tag project.image.square_mini.url, class: "rounded" if project.image.present? %>
           <% end %>
         </td>
       </tr>

@@ -7,7 +7,7 @@
 
 <p>
   <strong>Image:</strong>
-  <%= image_tag @project.image.url, width: '100%' if @project.image.present? %>
+  <%= image_tag @project.image.middle.url, class: 'rounded' if @project.image.present? %>
 </p>
 
 <p>
