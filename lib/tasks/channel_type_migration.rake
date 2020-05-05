@@ -5,7 +5,7 @@ namespace :channel_type_migration do
     Channel.all.each do |channel|
       case channel.kind
       when 1
-        channel.update(type: 'Channel::times')
+        channel.update(type: 'Channel::Times')
       when 2
         channel.update(type: 'Channel::DirectMessage')
       when 3
@@ -19,7 +19,7 @@ namespace :channel_type_migration do
       if follow.followable_type == 'Channel'
         case follow.followable.kind
         when 1
-          follow.update(followable_type: 'Channel::times')
+          follow.update(followable_type: 'Channel::Times')
         when 2
           follow.update(followable_type: 'Channel::DirectMessage')
         when 3

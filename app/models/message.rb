@@ -17,13 +17,13 @@ class Message < ApplicationRecord
   mount_uploader :image, ImageUploader
   mount_uploader :video, VideoUploader
 
-  scope :is_channel_times, ->() { joins(:channel).where(channels: { type: 'Channel::times' }) }
+  scope :is_channel_times, ->() { joins(:channel).where(channels: { type: 'Channel::Times' }) }
   scope :has_image, ->() { where.not(image: nil) }
 
   private
 
   def notify_following_users
-    return unless channel.times?
+    return unless channel.type == 'Channel::Times'
     user.user_followers.each do |follow_user|
       NotificationMailer.times_message_create(user, follow_user, id).deliver
     end
