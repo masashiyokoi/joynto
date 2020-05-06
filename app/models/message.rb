@@ -2,6 +2,7 @@ class Message < ApplicationRecord
   include PublicActivity::Model
   belongs_to :user
   belongs_to :channel
+  belongs_to :channel_times, foreing_key: :channel_id, class_name: 'Channel::Times'
   has_many :notifications, as: :notifiable
 
   after_create :notify_following_users
