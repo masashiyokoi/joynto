@@ -51,13 +51,10 @@
                 </li>
                 <li class="nav-header">mypage</li>
                 <li class="nav-item">
-                  <%= link_to 'edit profile', edit_user_path(current_user), class: "nav-link" %>
+                  <%= link_to 'edit', edit_user_path(current_user), class: "nav-link" %>
                 </li>
                 <li class="nav-item">
                   <%= link_to 'show profile', mypages_show_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link " href="/channel/directs">direct messages</a>
                 </li>
                 <% end %>
                 <li class="nav-header">Times</li>
@@ -70,20 +67,24 @@
                 </li>
                 <% end %>
                 <li class="nav-item">
-                  <a class="nav-link" href="/messages">all times</a>
+                  <a class="nav-link" href="/messages">all</a>
                 </li>
                 <li class="nav-header">Projects</li>
                 <li class="nav-item">
-                  <a class="nav-link " href="/projects">all projects</a>
+                  <a class="nav-link " href="/projects">all</a>
                 </li>
                 <% if user_signed_in? %>
                 <li class="nav-item">
                   <%= link_to "new", new_project_path, class: "nav-link" %>
                 </li>
+                <li class="nav-header">Direct message</li>
+                <li class="nav-item">
+                  <a class="nav-link " href="/channel/directs">all</a>
+                </li>
                 <% end %>
                 <li class="nav-header">Users</li>
                 <li class="nav-item">
-                  <a class="nav-link " href="/users">all users</a>
+                  <a class="nav-link " href="/users">all</a>
                 </li>
                 <li class="nav-header">More</li>
                 <% if user_signed_in? %>
