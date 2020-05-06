@@ -76,6 +76,11 @@
                 <li class="nav-item">
                   <a class="nav-link " href="/projects">all projects</a>
                 </li>
+                <% if user_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to "new", new_project_path, class: "nav-link" %>
+                </li>
+                <% end %>
                 <li class="nav-header">Users</li>
                 <li class="nav-item">
                   <a class="nav-link " href="/users">all users</a>

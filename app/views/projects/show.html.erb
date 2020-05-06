@@ -1,29 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @project.title %>
-</p>
+<h1 class="h2"><%= @project.title %></h1>
 
 <p>
-  <strong>Image:</strong>
   <%= image_tag @project.image.middle.url, class: 'rounded' if @project.image.present? %>
 </p>
 
+<h5>detail</h5>
 <p>
-  <strong>Detail:</strong>
-  <p>
-    <%= md_to_html(@project.detail) %>
-  </p>
+  <%= md_to_html(@project.detail) %>
 </p>
 
 <p>
-  <strong>Start datetime:</strong>
+  <strong>Start:</strong>
   <%= @project.start_datetime %>
 </p>
 
 <p>
-  <strong>End datetime:</strong>
+  <strong>End:</strong>
   <%= @project.end_datetime %>
 </p>
 
@@ -40,6 +34,6 @@
 </p>
 
 <% if user_signed_in? %>
-<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Edit', edit_project_path(@project) %> | <%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
 <%= link_to 'Back', projects_path %>

@@ -15,7 +15,7 @@
 
   <tbody>
     <% @projects.each do |project| %>
-      <tr>
+      <tr class="position-relative" style="transform: rotate(0);">
         <td><%= project.title %></td>
         <td><%= image_tag project.image.square_mini.url, class: 'rounded' if project.image.present? %></td>
         <td><%= project.start_datetime.strftime('%Y/%m/%d') %></td>
@@ -26,11 +26,7 @@
           <% end %>
         </td>
         <td><%= project.status %></td>
-        <td><%= link_to 'Show', project %></td>
-        <% if user_signed_in? %>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+        <td><%= link_to 'show', project, class: 'stretched-link' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -59,7 +55,7 @@
 
   <tbody>
     <% @projects_completed.each do |project| %>
-      <tr>
+      <tr class="position-relative" style="transform: rotate(0);">
         <td><%= project.title %></td>
         <td><%= image_tag project.image.square_mini.url, class: "rounded" if project.image.present? %></td>
         <td><%= project.start_datetime.strftime('%Y/%m/%d') %></td>
@@ -70,11 +66,7 @@
           <% end %>
         </td>
         <td><%= project.status %></td>
-        <td><%= link_to 'Show', project %></td>
-        <% if user_signed_in? %>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+        <td><%= link_to 'show', project, class: 'stretched-link' %></td>
       </tr>
     <% end %>
   </tbody>
