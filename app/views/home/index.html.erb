@@ -1,12 +1,12 @@
 <div class="col-12">
-  <h2 class="h3">new times messages images</h2>
+  <h2 class="h4">new times messages images</h2>
     <% @messages_with_image.limit(24).each do |message| %>
       <%= link_to message_path(message) do %><%= image_tag message.image.square_mini.url if message.image.present? %><% end %>
     <% end %>
     <p>
-      <a class="h4" href="/messages/images"><u>all images</u></a>
+      <a class="h5" href="/messages/images"><u>more</u></a>
     </p>
-  <h2 class="h3">new times messages</h2>
+  <h2 class="h4">new times messages</h2>
       <% @messages.limit(8).each do |message| %>
       <div>
         <%= link_to message_path(message) do %>
@@ -15,8 +15,8 @@
       </div>
       <hr style="background-color: white;">
       <% end %>
-      <a class="h4" href="/messages"><u>all messages</u></a>
-  <h2 class="h3">new projects</h2>
+      <a class="h5" href="/messages"><u>more</u></a>
+  <h2 class="h4">new projects</h2>
   <table class="table">
     <tbody>
       <% @project_activities.limit(5).each do |activity| %>
