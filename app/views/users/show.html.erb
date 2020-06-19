@@ -14,45 +14,7 @@
   <% end %>
 <hr>
 <h2 class="h4">Profile</h2>
-<p>
-<%= @user.profile %>
-</p>
-<% if @user.followers.present? %>
-<h2 class="h4">Follower</h2>
-  <% @user.followers.each do |user| %>
-    <%= link_to user_path(user) do %>
-      <%= image_tag user.image.square.url, class: 'rounded-circle', width: '50px' if user.image.present? %>
-    <% end %>
-  <% end %>
-<% end %>
-
-<% if @user.projects.present? %>
-<h2 class="h4">Projects</h2>
-<table class="table table-bordered">
-  <% @user.projects.each do |project| %>
-      <tr>
-        <td>
-          <%= link_to project_path(project) do %>
-          <%= project.title %>
-          <%= project.start_datetime.strftime('%Y/%m/%d') %>
-          <%= project.end_datetime.strftime('%Y/%m/%d') %>
-          <%= image_tag project.image.square_mini.url, class: "rounded" if project.image.present? %>
-          <% end %>
-        </td>
-      </tr>
-  <% end %>
-</table>
-<% end %>
-
-<% if @user.following_users.present? %>
-<h2 class="h4">Following</h2>
-  <% @user.following_users.each do |user| %>
-    <%= link_to user_path(user) do %>
-      <%= image_tag user.image.square.url, class: 'rounded-circle', width: '50px' if user.image.present? %>
-    <% end %>
-  <% end %>
-<% end %>
-
+<p><%= @user.profile %></p>
 <% if @user.messages.is_channel_times.has_image.present? %>
 <h2 class="h4">images</h2>
   <% @user.messages.is_channel_times.has_image.limit(6).order(id: :desc).each do |message| %>

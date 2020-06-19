@@ -1,11 +1,17 @@
 <h1 class="h3">Users</h1>
+<dl class="form-group">
+  <%= search_form_for @q, url: users_path do |f| %>
+    <%= f.text_field :name_cont, class: 'form-control' %>
+    <%= f.submit ("search") , class: 'btn search-btn'%>
+  <% end %>
+</dl>
+<th><%= sort_link(@q, :name) %></th>
 <hr>
 <% @users.each do |user| %>
   <%= link_to user_path(user) do %>
   <div>
-    <%= image_tag user.image.square.url, class: 'rounded-circle', width: '50px' if user.image.present? %>
+    <%= image_tag user.image.square.url, class: 'rounded', width: '50px' if user.image.present? %>
     <label><%= user.name %></label>
-
   </div>
   <% end %>
   <hr>

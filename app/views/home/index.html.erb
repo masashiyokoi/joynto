@@ -16,15 +16,4 @@
       <hr style="background-color: white;">
       <% end %>
       <a class="h5" href="/messages"><u>more</u></a>
-  <h2 class="h4">new projects</h2>
-  <table class="table">
-    <tbody>
-      <% @project_activities.limit(5).each do |activity| %>
-        <tr>
-          <td><%= image_tag activity.trackable.image.square_mini.url if activity.trackable.image.present? %></td>
-          <td><%= link_to project_path(activity.trackable) do %><%= activity.trackable.title %> <small><%= activity.trackable.created_at %></small><% end %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
 </div>
