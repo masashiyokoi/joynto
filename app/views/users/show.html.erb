@@ -24,19 +24,5 @@
 
 <% if @user.messages.is_channel_times.present? %>
 <h2 class="h4">messages</h2>
-  <% @user.messages.is_channel_times.order(id: :desc).each do |message| %>
-    <%= md_to_html(message.content) %>
-    <p>
-      <%= link_to message do %>
-        <%= image_tag message.image.middle.url, width: '33%' if message.image.present? %>
-      <% end %>
-    </p>
-    <p>
-      <%= link_to message do %>
-        <%= video_tag message.video.url, width: "33%", controls: true, autobuffer: true if message.video.present? %>
-      <% end %>
-    </p>
-    <%= message.created_at %>
-  <hr>
-  <% end %>
+  <%= render 'messages/messages', messages: @user.messages.is_channel_times.order(id: :desc) %>
 <% end %>
