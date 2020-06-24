@@ -65,13 +65,13 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: "ploak.koagen.org", protocol: 'https' }
+  config.action_mailer.default_url_options = { host: "joynto.life", protocol: 'https' }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: 'smtp.sendgrid.net',
     port: 587,
-    domain: 'ploak.koagen.com',
+    domain: 'joynto.life',
     user_name: ENV['PLOAK_SENDGRID_USER_NAME'],
     password: ENV['PLOAK_SENDGRID_PASSWORD'],
     authentication: :plain,
