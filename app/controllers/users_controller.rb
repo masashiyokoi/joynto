@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   before_action :check_current_user, only: [:edit, :update, :destroy]
 
   def index
-    @users = User.order("RAND()")
+    @q = User.ransack(params[:q])
+    @users = @q.result.page(params[:page])
   end
 
   def show
