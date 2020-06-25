@@ -1,4 +1,4 @@
-<h1>Direct message with <%= @channel.user_followers.where.not(id: current_user.id).first.name %></h1>
+<h1 class="h3">Direct message with <%= @channel.user_followers.where.not(id: current_user.id).first.name %></h1>
 <hr>
 <% if user_signed_in? %>
 <%= render 'form', message: @new_message %>
