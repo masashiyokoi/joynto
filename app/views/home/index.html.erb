@@ -1,19 +1,16 @@
 <div class="col-12">
-  <h2 class="h4">new times messages images</h2>
-    <% @messages_with_image.limit(24).each do |message| %>
+  <div class="">
+    <% @messages_with_image.each do |message| %>
       <%= link_to message_path(message) do %><%= image_tag message.image.square_mini.url if message.image.present? %><% end %>
     <% end %>
-    <p>
-      <a class="h5" href="/messages/images"><u>more</u></a>
-    </p>
-  <h2 class="h4">new times messages</h2>
-      <% @messages.limit(8).each do |message| %>
-      <div>
-        <%= link_to message_path(message) do %>
-          <%= truncate(message.content, length: 30) %> <small><%= message.created_at %></small>
-        <% end %>
-      </div>
-      <hr style="background-color: white;">
+  </div>
+  <hr style="background-color: white;">
+  <div class="">
+    <% @messages.each do |message| %>
+      <%= link_to message_path(message) do %>
+        <%= truncate(message.content, length: 30) %> <small><%= message.created_at %></small>
       <% end %>
-      <a class="h5" href="/messages"><u>more</u></a>
+      <hr style="background-color: white;">
+    <% end %>
+  </div>
 </div>
