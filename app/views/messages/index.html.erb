@@ -1,12 +1,2 @@
-<%= search_form_for(@q, url:messages_path) do |f| %>
-<div class="input-group">
-  <%= f.text_field :content_or_user_name_cont, class: "form-control", placeholder: "message or user name" %>
-  <span class="input-group-btn">
-    <button class="btn btn-default" type="submit">
-      <i class="fas fa-search"></i>
-    </button>
-  </span>
-</div>
-<% end %>
 <hr>
 <%= render 'messages', messages: @messages %>
