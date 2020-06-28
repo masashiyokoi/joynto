@@ -5,6 +5,7 @@ class Channel::Directs::MessagesController < ApplicationController
   def index
     @new_message = Message.new
     @messages = @channel.messages.order(id: :desc).page(params[:page]).per(24)
+    read
   end
 
   def show
@@ -69,6 +70,13 @@ class Channel::Directs::MessagesController < ApplicationController
     def check_current_user
       unless @channel.user_followers.pluck(:id).include? current_user.id
         redirect_to root_path, alert: 'no permission'
+      end
+    end
+
+    def read
+      messages = Message.where(channel_id: @channel.id)
+      messages.each do |message|
+        Notification.where(target_id: current_user.id, notifiable_id: message.id).update(id_read: true)
       end
     end
 
