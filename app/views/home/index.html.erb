@@ -4,13 +4,13 @@
       <%= link_to message_path(message) do %><%= image_tag message.image.square_mini.url if message.image.present? %><% end %>
     <% end %>
   </div>
-  <hr style="background-color: white;">
+  <hr>
   <div class="">
     <% @messages.each do |message| %>
       <%= link_to message_path(message) do %>
         <%= truncate(message.content, length: 30) %> <small><%= message.created_at %></small>
       <% end %>
-      <hr style="background-color: white;">
+      <hr>
     <% end %>
   </div>
 </div>
