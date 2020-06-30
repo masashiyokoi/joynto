@@ -13,16 +13,14 @@
     <% end %>
   <% end %>
 <hr>
-<h2 class="h4">Profile</h2>
 <p><%= @user.profile %></p>
 <% if @user.messages.is_channel_times.has_image.present? %>
-<h2 class="h4">images</h2>
   <% @user.messages.is_channel_times.has_image.limit(6).order(id: :desc).each do |message| %>
     <%= link_to message_path(message) do %><%= image_tag message.image.middle.url, width: '150px' if message.image.present? %><% end %>
   <% end %>
 <% end %>
 
 <% if @user.messages.is_channel_times.present? %>
-<h2 class="h4">messages</h2>
+  <hr>
   <%= render 'messages/messages', messages: @user.messages.is_channel_times.order(id: :desc) %>
 <% end %>
