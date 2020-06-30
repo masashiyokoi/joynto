@@ -1,5 +1,6 @@
 class Channel::Directs::MessagesController < ApplicationController
   before_action :set_channel, only: [:index, :create]
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :check_current_user, only: [:index, :create]
 
   def index
