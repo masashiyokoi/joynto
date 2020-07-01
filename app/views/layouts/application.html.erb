@@ -39,11 +39,6 @@
                 </button>
               </form> -->
               <ul class="nav nav-pills nav-stacked flex-column">
-                <% if user_signed_in? %>
-                <li class="nav-item">
-                  <%= link_to 'MYPAGE', edit_user_path(current_user), class: "nav-link" %>
-                </li>
-                <% end %>
                 <li class="nav-item">
                   <a class="nav-link" href="/messages">TIMES</a>
                 </li>
@@ -56,6 +51,9 @@
                   <a class="nav-link " href="/users">USERS</a>
                 </li>
                 <% if user_signed_in? %>
+                  <li class="nav-item">
+                    <%= link_to 'mypage', edit_user_path(current_user), class: "nav-link" %>
+                  </li>
                   <li class="nav-item">
                     <%= link_to 'logout', destroy_user_session_path, method: :delete, class: "nav-link" %>
                   </li>
