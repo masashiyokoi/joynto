@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'Ploak <noreply@ploak.koagen.org>'
+  default from: 'Joynto <noreply@joynto.life>'
   layout 'mailer'
 end
