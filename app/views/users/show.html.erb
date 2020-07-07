@@ -8,7 +8,7 @@
       <% if current_user.following? @user %>
         <%= link_to stop_following_user_path(@user), method: :put do %><i class="far fa-minus-square"> stop following</i><% end %>
       <% else %>
-        <%= link_to follow_user_path(@user), method: :put do %><i class="far fa-plus-square">follow</i><% end %>
+        <%= link_to follow_user_path(@user), method: :put do %><i class="far fa-plus-square"> follow</i><% end %>
       <% end %>
     <% end %>
   <% end %>
