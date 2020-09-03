@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   devise_for :sponsors, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :projects
-  resources :tasks
   resources :messages do
     member do
       put 'like'    => 'messages#like'
