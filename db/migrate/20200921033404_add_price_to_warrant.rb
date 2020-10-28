@@ -1,0 +1,5 @@
+class AddPriceToWarrant < ActiveRecord::Migration[5.2]
+  def change
+    add_column :warrants, :price, :integer
+  end
+end
