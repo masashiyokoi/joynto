@@ -11,23 +11,25 @@
 #
 default: &default
   adapter: mysql2
-  encoding: utf8
+  encoding: utf8mb4 # <= utf8 から utf8mb4 に変更
+  charset: utf8mb4 # <= 追加
+  collation: utf8mb4_general_ci # <= 追加
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password:
-  socket: /tmp/mysql.sock
+  password: password
+  socket: /var/run/mysqld/mysqlx.sock
+  host: db
 
 development:
   <<: *default
-  database: ploak_development
+  database: joynto_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: ploak_test
-
+  database: joynto_test
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -49,7 +51,7 @@ test:
 #
 production:
   <<: *default
-  database: ploak_production
-  username: ploak
-  password: <%= ENV['PLOAK_DATABASE_PASSWORD'] %>
-  socket: /var/lib/mysql/mysql.sock
+  database: joynto_production
+  username: joynto
+  password: <%= ENV['JOYNTO_DATABASE_PASSWORD'] %>
+  host: <%= ENV['JOYNTO_DATABASE_HOST'] %>

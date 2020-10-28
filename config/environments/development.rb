@@ -62,9 +62,10 @@ Rails.application.configure do
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
-  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  config.file_watcher = ActiveSupport::FileUpdateChecker
+  config.reload_classes_only_on_change = false
 
   CarrierWave.configure do |config|
-    config.fog_directory  = 'ploak-development'
+    config.fog_directory  = 'joynto-development'
   end
 end
