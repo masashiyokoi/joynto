@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.0'
+ruby '2.7.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.0'
+gem 'rails'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server
@@ -50,10 +50,9 @@ gem 'simple_calendar', '~> 2.0'
 gem 'redcarpet', '~> 2.3.0'
 gem 'coderay'
 gem "mini_magick", ">= 4.9.4"
-gem "fog"
+gem "fog-aws"
 gem 'kaminari'
 gem 'kaminari-bootstrap'
-gem 'acts_as_commentable_with_threading'
 gem 'rubocop'
 gem 'rubocop-performance'
 gem 'devise_invitable', '~> 2.0.0'
@@ -64,11 +63,9 @@ gem "yard", ">= 0.9.20"
 gem "bootstrap4-datetime-picker-rails"
 gem 'react_on_rails'
 gem 'acts_as_tenant'
-
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-end
+gem 'sidekiq'
+gem 'sinatra', require: false # ダッシュボードを利用するため
+gem 'webpacker', '~> 5.x'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
@@ -94,6 +91,7 @@ group :development, :test do
   gem 'rails-erd'
   gem 'shoulda-matchers', '~> 4.0'
   gem 'rspec-rails', '~> 4.0.0'
+  gem "factory_bot_rails"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
