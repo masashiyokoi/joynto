@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :follow, :stop_following]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :request_match, :accept_match]
   before_action :check_current_user, only: [:edit, :update, :destroy]
 
   def index
-    @q = User.ransack(params[:q])
+    @q = User.order(membership_type: :desc).ransack(params[:q])
     @users = @q.result.page(params[:page])
   end
 
@@ -60,42 +60,43 @@ class UsersController < ApplicationController
     end
   end
 
-  def follow
-    current_user.follow @user
-    NotificationMailer.send_follow_message_to_user(current_user, @user).deliver
-
-    if @user.following? current_user
-
-      Channel::DirectMessage.create_follows([current_user, @user])
-
-      NotificationMailer.direct_message_create(current_user, @user).deliver
-    end
+  def request_match
+    match = current_user.matches.create(match_type: 'match_message')
+    match.user_matches.create(user: @user)
+    NotificationMailer.send_request_message_to_user(current_user, @user).deliver
 
     redirect_to @user, notice: "You follow user"
   end
 
-  def stop_following
-    if @user.following? current_user
-      Channel::DirectMessage.delete_follows([current_user, @user])
-    end
-    current_user.stop_following @user
-    redirect_to @user, notice: "You stop_following this!"
+  def accept_match
+    @match = current_user.matches.find(params[:match_id])
+    raise 'asfasf' unless @match.users.include? @user
+    @match.update(match_status: :connected)
+    @match.notifications.create(target: @user)
+    NotificationMailer.match_message_create(current_user, @user).deliver
+  end
+
+  def block
+  end
+
+  def read_notification
+    @match = current_user.matches.find(params[:match_id])
+    @match.notifications.unread.find_by(target: current_user).update(read: true)
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    def check_current_user
-      unless @user == current_user
-        redirect_to root_path, alert: 'no permission'
-      end
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:name, :profile, :image)
+  def check_current_user
+    unless @user == current_user
+      redirect_to root_path, alert: 'no permission'
     end
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :profile, :image, :match_id)
+  end
 end
