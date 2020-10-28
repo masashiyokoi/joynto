@@ -11,19 +11,19 @@ class NotificationMailer < ApplicationMailer
     end
   end
 
-  def send_follow_message_to_user(from_user, to_user)
+  def send_request_message_to_user(from_user, to_user)
     @to_user = to_user
     @from_user = from_user
     mail(
-      subject: "new follower",
+      subject: "New match request",
       to: @to_user.email
     ) do |format|
       format.text
     end
   end
 
-  def direct_message_to_user(from_user, to_user)
-    @direct_message = from_user.following_by_type('Channel') && to_user.following_by_type('Channel').first
+  def match_message_to_user(from_user, to_user, match)
+    @match = match
     @to_user = to_user
     @from_user = from_user
     mail(
@@ -34,11 +34,11 @@ class NotificationMailer < ApplicationMailer
     end
   end
 
-  def direct_message_create(from_user, to_user)
+  def match_message_create(from_user, to_user)
     @to_user = to_user
     @from_user = from_user
     mail(
-      subject: "New direct relation",
+      subject: "New match connected",
       to: @to_user.email
     ) do |format|
       format.text

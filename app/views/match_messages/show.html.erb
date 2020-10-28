@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <%= md_to_html(@match_message.content) %>
+</p>
+<p>
+  <%= image_tag @match_message.image.url, width: '100%' if @match_message.image.present? %>
+</p>
+<p>
+  <%= video_tag @match_message.video.url, width: "100%", controls: true, autobuffer: true if @match_message.video.present? %>
+</p>
+<p>
+  <%= link_to user_path(@match_message.user) do %>
+    <%= image_tag @match_message.user.image.square.url, class: 'rounded-circle', width: '50px' if @match_message.user.image.present? %>
+  <% end %>
+
+<%= @match_message.created_at %>
+</p>
+<%= render 'vote', message: @match_message %>
+<hr>
+<p>
+<% if user_signed_in? %>
+  <%= link_to 'bolt!', like_match_message_path(@match_message), method: :put %>
+  <%= link_to 'unvote', unvote_match_message_path(@match_message), method: :put %>
+  <% if current_user?(@match_message.user) %>
+  <%= link_to 'Edit', edit_match_message_path(@match_message) %>
+  <%= link_to 'Destroy', @match_message, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+<% end %>
+<%= link_to 'Back', match_match_messages_path(@match) %>
+</p>

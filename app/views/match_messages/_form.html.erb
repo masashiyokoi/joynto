@@ -1,0 +1,34 @@
+<%= form_with(model: [@match, match_message], local: true) do |form| %>
+  <% if match_message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(match_message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+      <ul>
+      <% match_message.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :content %>
+    <%= form.text_area :content, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :image %>
+    <%= image_tag match_message.image.url, width: "300px" if match_message.image? %>
+    <%= form.file_field :image, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :video %>
+    <%= video_tag match_message.video.url, width: "50%", controls: true, autobuffer: true if match_message.video.present? %>
+    <%= form.file_field :video, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-dark" %>
+  </div>
+<% end %>

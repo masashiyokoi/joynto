@@ -1,0 +1,17 @@
+<h1>Direct Messages</h1>
+<hr>
+<% @matches.each do |match| %>
+<%= link_to match_path(match) do %>
+  <%= current_user.direct_match_user(match).name %>
+  <% if current_user.direct_match_user(match).request_matches? current_user %>
+    <%= link_to accept_match_user_path(current_user.direct_match_user(match), match_id: match.id), method: :put do %><i class="far fa-plus-square"> accept_match</i><% end %>
+  <% end %>
+  <% if match.has_message_notification?(current_user) %>
+    <%= link_to match_path(match) do %><i class="fas fa-fire"></i> new message</i><% end %>
+  <% end %>
+  <% if match.notifications.unread.where(target: current_user).present? %>
+    NEW MATCH!
+  <% end %>
+<% end %>
+<hr>
+<% end %>

@@ -61,7 +61,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "ploak_#{Rails.env}"
+  # config.active_job.queue_name_prefix = "joynto_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
 
@@ -106,6 +106,6 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   CarrierWave.configure do |config|
-    config.fog_directory  = 'ploak-production'
+    config.fog_directory  = 'joynto-production'
   end
 end

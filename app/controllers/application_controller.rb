@@ -3,8 +3,13 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
+  before_action :unread_notifications, if: :user_signed_in?
 
   protect_from_forgery
+
+  def unread_notifications
+    @unread_notifications = current_user.notifications.unread
+  end
 
   protected
 

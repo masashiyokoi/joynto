@@ -8,53 +8,66 @@ class User < ApplicationRecord
   has_many :messages
   has_many :notifications, as: :target
   has_many :projects, foreign_key: :owner_id
-  has_one :channel_times, class_name: 'Channel::Times'
+  has_many :user_matches
+  has_many :user_request_matches, -> { where(process_type: :request) }, class_name: 'UserMatch'
+  has_many :user_accept_matches, -> { where(process_type: :accept) }, class_name: 'UserMatch'
+  has_many :matches, through: :user_matches
+  has_many :request_matches, through: :user_request_matches, source: :match
+  has_many :accept_matches, through: :user_accept_matches, source: :match
+  has_many :times_messages
+  has_many :match_messages
+  has_many :issuer_warrants, class_name: 'Warrant', foreign_key: :issuer_user_id
+  has_many :owner_warrants, class_name: 'Warrant', foreign_key: :owner_user_id
+
+  enum membership_type: { attendee: 0, member: 1, angel: 2, seed: 11 }
 
   validates :name,
     presence: true,
     uniqueness: true,
     length: { maximum: 16 },
     format: { with: /\A[a-z0-9]+\z/i, message: "Only alphanumeric characters can be used"  }
-  after_create :create_timeline
+
   before_save :check_invitation_user_regist
 
   acts_as_voter
-  acts_as_followable
-  acts_as_follower
 
   mount_uploader :image, ImageUploader
 
   scope :active, ->() { where.not(invitation_accepted_at: nil) }
 
-  def following_each_users
-    all_following & followers
+  def request_matches?(user)
+    UserMatch.where(user: user, match: matches.pluck(:id)).joins(:match).where(matches: { match_status: :created }).present?
   end
 
-  def remember_me
-    true
+  def matched?(user)
+    UserMatch.where(user: user, match: matches.pluck(:id)).joins(:match).where(matches: { match_status: :connected }).present?
+  end
+
+  def can_send_message_to_match? match
+    if membership_type != 'attendee'
+      true
+    else
+      !requested_to_match? match
+    end
+  end
+
+  def requested_to_match? match
+    user_matches.joins(:match).where(process_type: :request).present?
+  end
+
+  def direct_match_user match
+    return unless match.match_type == 'direct_match'
+    (match.users - [self])[0]
   end
 
   private
 
-  def create_timeline
-    return if channel_times
-    channel = Channel::Times.create(
-      user_id: id
-    )
-  end
-
   def check_invitation_user_regist
     return unless invitation_accepted_at_changed? || confirmed_at_changed?
-    send_mail_to_existing_users
-    return unless invitation_accepted_at_changed?
-
-    follow invited_by
-    invited_by.follow self
-
-    Channel::DirectMessage.create_follows([self, invited_by])
+    send_mail_to_active_users
   end
 
-  def send_mail_to_existing_users
+  def send_mail_to_active_users
     User.active.each do |u|
       NotificationMailer.new_user_announce(self, u).deliver
     end
