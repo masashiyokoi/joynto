@@ -1,4 +1,4 @@
-<% messages.each do |message| %>
+<% times_messages.each do |message| %>
 <div class="row">
   <% if message.image.present? || message.video.present? %>
   <div class="col-3">
@@ -24,7 +24,7 @@
       <%= image_tag message.user.image.square.url, class: "profile-img rounded" if message.user.image.present? %>
     <% end %>
     </p>
-    <label><%= render 'messages/vote', message: message %><%= link_to message do %><%= message.created_at %><% end %></label>
+    <label><%= render 'times_messages/vote', message: message %><%= link_to message do %><%= message.created_at %><% end %></label>
   </div>
 </div>
 <hr>

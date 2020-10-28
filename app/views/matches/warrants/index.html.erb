@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Warrants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Price per hour</th>
+      <th>Beneficiary user</th>
+      <th>Issuer user</th>
+      <th>Start datetime</th>
+      <th>End datetime</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @warrants.each do |warrant| %>
+      <tr>
+        <td><%= warrant.status %></td>
+        <td><%= warrant.price_per_hour %></td>
+        <td><%= warrant.owner_user_id %></td>
+        <td><%= warrant.issuer_user_id %></td>
+        <td><%= warrant.start_datetime %></td>
+        <td><%= warrant.end_datetime %></td>
+        <td><%= link_to 'Show', [@match, warrant] %></td>
+        <td><%= link_to 'Edit', edit_match_warrant_path(id: warrant.id) %></td>
+        <td><%= link_to 'Destroy', [@match, warrant], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Warrant', new_match_warrant_path %>

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @warrant.status %>
+</p>
+
+<p>
+  <strong>Price per hour:</strong>
+  <%= @warrant.price_per_hour %>
+</p>
+
+<p>
+  <strong>Beneficiary user:</strong>
+  <%= @warrant.owner_user_id %>
+</p>
+
+<p>
+  <strong>Issuer user:</strong>
+  <%= @warrant.issuer_user_id %>
+</p>
+
+<p>
+  <strong>Start datetime:</strong>
+  <%= @warrant.start_datetime %>
+</p>
+
+<p>
+  <strong>End datetime:</strong>
+  <%= @warrant.end_datetime %>
+</p>
+
+<%= link_to 'Edit', edit_match_warrant_path(@warrant) %> |
+<%= link_to 'Back', match_warrants_path %>

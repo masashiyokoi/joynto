@@ -1,0 +1,62 @@
+<% @match_messages.each do |message| %>
+<div class="row">
+  <% if message.image.present? || message.video.present? %>
+  <div class="col-3">
+    <%= link_to message do %>
+
+    <p>
+      <%= image_tag message.image.middle.url, width: '100%' if message.image.present? %>
+    </p>
+    <p>
+      <%= video_tag message.video.url, width: "100%", controls: true, autobuffer: true if message.video.present? %>
+    </p>
+    <% end %>
+  </div>
+  <% end %>
+  <div class="col-<%= message.image.present? || message.video.present? ? '9' : '12' %> message-content">
+    <%= truncate(message.content, length: 100) %>
+  </div>
+  <div class="col-12 message-content">
+    <p>
+      <% if message.warrant.present? %>
+      <%= message.warrant.price %>
+      <%= message.warrant.start_datetime %>
+      <%= message.warrant.end_datetime %>
+      <% end %>
+    <%= link_to user_path(message.user) do %>
+      <%= image_tag message.user.image.square.url, class: "profile-img rounded" if message.user.image.present? %>
+    <% end %>
+    </p>
+  </div>
+</div>
+<hr>
+<% end %>
+<%= link_to 'new', new_match_match_message_path(match_id: @match.id) %>
+<%= link_to 'new warrant', new_match_warrant_path(match_id: @match.id) if @match.warrant_match? %>
+
+<i class="fas fa-bolt fa-lg" data-toggle="modal" data-target="#exampleModal1" href="#exampleModal1" style="cursor: pointer;"></i>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">bolt!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>あなたからリクエストしたマッチへのメッセージ送信は、有料会員登録が必要になります。</p>
+        <p>リクエストされたマッチへのメッセージ送信は、無料会員でも利用が可能です。</p>
+        <p>アテンディーは無料会員、メンバーは3,000円の有料会員でマッチング利用、エンジェルは8,000円の有料会員でワラントの発行が可能、シードはワラントの権利行使が可能</p>
+        <p>3,000/月で、メッセージは送り放題</p>
+        <p>8,000/月で、エンジェル会員、ワラント6,000円分が付与されます。（未利用は繰越）</p>
+        <p>ワラントは、シード会員に対して有効です。マッチングして実際に会う事に対する予約券で、面会成立を持って権利行使となります。</p>
+        <p>シード会員はワラントの権利行使を通じて報酬を得る事が可能なユーザーであり、運営会社の審査を経た上でシード会員となる事が可能です。</p>
+        <p>シード会員はワラントの権利行使でのマッチングも可能だが、アテンディーやメンバーとの非ワラントでのマッチングも可能？です。</p>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>

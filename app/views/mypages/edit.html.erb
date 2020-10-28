@@ -24,7 +24,3 @@
   <hr>
   <%= render 'times_messages/messages', times_messages: @user.times_messages.order(id: :desc) %>
 <% end %>
-
-<% if @user.seed? && !current_user.angel? %>
-  warrant and angel ad
-<% end %>
