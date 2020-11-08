@@ -19,5 +19,5 @@ ADD app/nginx/nginx.conf /etc/nginx/nginx.conf
 ADD app/nginx/joynto.conf /etc/nginx/conf.d/joynto.conf
 ADD app/supervisor/app.conf /etc/supervisor/conf.d/app.conf
 
-EXPOSE 80
+EXPOSE 3000
 CMD ["/usr/bin/supervisord"]
