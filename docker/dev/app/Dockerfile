@@ -4,7 +4,7 @@ ENV APP_ROOT /var/www/joynto
 RUN apt-get update -y && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
-    build-essential \
+    build-essential vim \
     nodejs
 
 WORKDIR $APP_ROOT
