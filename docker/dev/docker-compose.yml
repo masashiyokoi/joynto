@@ -1,0 +1,48 @@
+version: '2'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./app/Dockerfile
+    ports:
+      - '80:80'
+    networks:
+      joynto:
+        ipv4_address: 10.0.5.1
+    volumes:
+      - ../../../joynto:/var/www/joynto/
+    tty: true
+    depends_on:
+      - db
+    extends:
+      file: ./mysql/password.yml
+      service: password
+
+  db:
+    build:
+      context: .
+      dockerfile: ./mysql/Dockerfile
+    restart: always
+    ports:
+      - '3306:3306'
+    networks:
+      joynto:
+        ipv4_address: 10.0.5.2
+    volumes:
+      - db_data:/var/lib/mysql
+    extends:
+      file: ./mysql/password.yml
+      service: password
+
+networks:
+  joynto:
+    driver: bridge
+    ipam:
+     driver: default
+     config:
+       - subnet: 10.0.0.0/12
+         gateway: 10.0.0.1
+
+volumes:
+  db_data:
+  sockets:
