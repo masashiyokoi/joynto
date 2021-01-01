@@ -1,0 +1,22 @@
+= form_with(model: times_message, local: true) do |form|
+  - if times_message.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(times_message.errors.count, "error")
+        prohibited this message from being saved:
+      %ul
+        - times_message.errors.full_messages.each do |message|
+          %li= message
+  .form-group
+    = form.label :content
+    = form.text_area :content, class: "form-control"
+  .form-group
+    = form.label :image
+    = image_tag times_message.image.url, width: "300px" if times_message.image?
+    = form.file_field :image, class: "form-control"
+  .form-group
+    = form.label :video
+    = video_tag times_message.video.url, width: "50%", controls: true, autobuffer: true if times_message.video.present?
+    = form.file_field :video, class: "form-control"
+  .actions
+    = form.submit class: "btn btn-dark"

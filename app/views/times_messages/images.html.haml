@@ -1,0 +1,3 @@
+- @has_image_messages.each do |message|
+  = link_to times_message_path(message) do
+    = image_tag message.image.square.url, width: '32%' if message.image.present?

@@ -1,0 +1,23 @@
+= form_with(model: user, local: true) do |form|
+  - if user.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(user.errors.count, "error")
+        prohibited this user from being saved:
+      %ul
+        - user.errors.full_messages.each do |message|
+          %li= message
+  .form-group
+    = form.label :name
+    = form.text_field :name, class: "form-control"
+  %p= image_tag @user.image.url || 'noimage.png', width: "300px", id: "img_prev"
+  .input-group
+    %label.input-group-btn
+      %span.btn.btn-light
+        Choose File#{form.file_field :image, id: "post_post_img", style: 'display:none;'}
+    %input.form-control{:readonly => "readonly", :type => "text"}/
+  .form-group
+    = form.label :profile
+    = form.text_area :profile, class: "form-control", rows: '10'
+  .actions
+    = form.submit class: "btn btn-info"

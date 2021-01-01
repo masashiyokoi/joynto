@@ -1,0 +1,29 @@
+= form_with(model: [@match, warrant], local: true) do |form|
+  - if warrant.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(warrant.errors.count, "error")
+        prohibited this warrant from being saved:
+      %ul
+        - warrant.errors.full_messages.each do |message|
+          %li= message
+  .form-group
+    = form.label :status
+    = form.select :status, Warrant.statuses.keys.map {|k| [k, k]}, {}, { class: 'form-control' }
+  .form-group
+    = form.label :price_per_hour
+    = form.number_field :price_per_hour, class: 'form-control'
+  .form-group
+    = form.label :owner_user_id
+    = warrant.owner_user.name
+  .form-group
+    = form.label :issuer_user_id
+    = warrant.issuer_user.name
+  .form-group.form-inline
+    = form.label :start_datetime
+    = form.datetime_select :start_datetime, { minute_step: 15, discard_day: true } ,{ class: 'form-control' }
+  .form-group.form-inline
+    = form.label :end_datetime
+    = form.datetime_select :end_datetime, { minute_step: 15, discard_day: true } ,{ class: 'form-control' }
+  .actions
+    = form.submit class: 'form-control'

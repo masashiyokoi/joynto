@@ -1,0 +1,49 @@
+%h1.h3 Projects
+%table.table
+  %thead
+    %tr
+      %th= sort_link(@q, :title)
+      %th= sort_link(@q, :image)
+      %th= sort_link(@q, :start)
+      %th= sort_link(@q, :end)
+      %th= sort_link(@q, :owner_name, 'Owner')
+      %th= sort_link(@q, :stats)
+      %th{:colspan => "3"}
+  %tbody
+    - @projects.each do |project|
+      %tr.position-relative{:style => "transform: rotate(0);"}
+        %td= project.title
+        %td= image_tag project.image.square_mini.url, class: 'rounded' if project.image.present?
+        %td= project.start_datetime.strftime('%Y/%m/%d')
+        %td= project.end_datetime.strftime('%Y/%m/%d')
+        %td
+          = link_to user_path(project.owner) do
+            = image_tag project.owner.image.square.url, class: "img-icon rounded-circle" if project.owner.image.present?
+        %td= project.status
+        %td= link_to 'show', project, class: 'stretched-link'
+%br/
+- if user_signed_in?
+  = link_to 'New Project', new_project_path
+%h1.h3 Completed Projects
+%table.table
+  %thead
+    %tr
+      %th title
+      %th image
+      %th start
+      %th end
+      %th owner_name
+      %th stats
+      %th{:colspan => "3"}
+  %tbody
+    - @projects_completed.each do |project|
+      %tr.position-relative{:style => "transform: rotate(0);"}
+        %td= project.title
+        %td= image_tag project.image.square_mini.url, class: "rounded" if project.image.present?
+        %td= project.start_datetime.strftime('%Y/%m/%d')
+        %td= project.end_datetime.strftime('%Y/%m/%d')
+        %td
+          = link_to user_path(project.owner) do
+            = image_tag project.owner.image.square.url, class: "img-icon rounded-circle" if project.owner.image.present?
+        %td= project.status
+        %td= link_to 'show', project, class: 'stretched-link'

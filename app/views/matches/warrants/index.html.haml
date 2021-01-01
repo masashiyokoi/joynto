@@ -1,0 +1,26 @@
+%p#notice= notice
+%h1 Warrants
+%table
+  %thead
+    %tr
+      %th Status
+      %th Price per hour
+      %th Beneficiary user
+      %th Issuer user
+      %th Start datetime
+      %th End datetime
+      %th{:colspan => "3"}
+  %tbody
+    - @warrants.each do |warrant|
+      %tr
+        %td= warrant.status
+        %td= warrant.price_per_hour
+        %td= warrant.owner_user_id
+        %td= warrant.issuer_user_id
+        %td= warrant.start_datetime
+        %td= warrant.end_datetime
+        %td= link_to 'Show', [@match, warrant]
+        %td= link_to 'Edit', edit_match_warrant_path(id: warrant.id)
+        %td= link_to 'Destroy', [@match, warrant], method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Warrant', new_match_warrant_path

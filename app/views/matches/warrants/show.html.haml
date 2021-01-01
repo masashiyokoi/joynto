@@ -1,0 +1,22 @@
+%p#notice= notice
+%p
+  %strong Status:
+  = @warrant.status
+%p
+  %strong Price per hour:
+  = @warrant.price_per_hour
+%p
+  %strong Beneficiary user:
+  = @warrant.owner_user_id
+%p
+  %strong Issuer user:
+  = @warrant.issuer_user_id
+%p
+  %strong Start datetime:
+  = @warrant.start_datetime
+%p
+  %strong End datetime:
+  = @warrant.end_datetime
+= link_to 'Edit', edit_match_warrant_path(@warrant)
+|
+= link_to 'Back', match_warrants_path

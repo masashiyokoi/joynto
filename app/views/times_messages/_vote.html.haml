@@ -1,0 +1,17 @@
+- if message.votes_for.up.by_type(User).voters.present?
+  %i.fas.fa-bolt.fa-lg{"data-target" => "#exampleModal#{message.id}", "data-toggle" => "modal", :href => "#exampleModal#{message.id}", :style => "cursor: pointer;"}
+/ Modal
+.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :id => "exampleModal#{message.id}", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5#exampleModalLabel.modal-title bolt!
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        - message.votes_for.up.by_type(User).voters.each do |voter|
+          = link_to user_path(voter) do
+            %p
+              = image_tag voter.image.square.url, class: 'rounded-circle', width: '50px' if voter.image.present?
+              = voter.name
+      .modal-footer

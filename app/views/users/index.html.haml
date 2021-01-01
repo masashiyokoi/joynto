@@ -1,0 +1,9 @@
+%hr/
+- @users.each do |user|
+  = link_to user_path(user) do
+    %div
+      = image_tag user.image.square.url, class: 'rounded', width: '50px' if user.image.present?
+      %label= user.name
+      %i
+        = user.membership_type
+  %hr/
