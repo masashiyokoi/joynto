@@ -66,6 +66,7 @@ gem 'acts_as_tenant'
 gem 'sidekiq'
 gem 'sinatra', require: false # ダッシュボードを利用するため
 gem 'webpacker', '~> 5.x'
+gem "haml-rails"
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
