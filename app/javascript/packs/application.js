@@ -15,4 +15,28 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-console.log('Hello World from Webpacker')
+require("@coreui/coreui-pro")
+require("@coreui/icons-pro")
+require("@coreui/icons")
+
+import 'bootstrap'
+// $(function() {
+//   function readURL(input) {
+//     if (input.files && input.files[0]) {
+//       var reader = new FileReader();
+//       reader.onload = function (e) {
+//         $('#img_prev').attr('src', e.target.result);
+//       }
+//       reader.readAsDataURL(input.files[0]);
+//     }
+//   }
+//   $("#post_post_img").change(function() {
+//     readURL(this);
+//   });
+// });
+// $(document).on('change', ':file', function() {
+//     var input = $(this),
+//     numFiles = input.get(0).files ? input.get(0).files.length : 1,
+//     label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+//     input.parent().parent().next(':text').val(label);
+// });

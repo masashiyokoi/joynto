@@ -1,0 +1,24 @@
+%p#notice= notice
+%h1.h2= @project.title
+%p
+  = image_tag @project.image.middle.url, class: 'rounded' if @project.image.present?
+%h5 detail
+%p
+  = md_to_html(@project.detail)
+%p
+  %strong Start:
+  = @project.start_datetime
+%p
+  %strong End:
+  = @project.end_datetime
+%p
+  %strong Owner:
+  = link_to user_path(@project.owner) do
+    = image_tag @project.owner.image.square.url, class: "img-icon rounded-circle" if @project.owner.image.present?
+%p
+  %strong Status:
+  = @project.status
+- if user_signed_in?
+  = link_to 'Edit', edit_project_path(@project)
+  | #{link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' }}
+= link_to 'Back', projects_path

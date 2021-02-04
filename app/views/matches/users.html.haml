@@ -1,0 +1,4 @@
+%hr/
+- if user_signed_in?
+  = render 'form', message: @new_message
+= render 'messages', messages: @messages
