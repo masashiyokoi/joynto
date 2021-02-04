@@ -62,11 +62,13 @@ gem 'rmagick'
 gem "yard", ">= 0.9.20"
 gem "bootstrap4-datetime-picker-rails"
 gem 'react_on_rails'
+gem 'react-rails'
 gem 'acts_as_tenant'
 gem 'sidekiq'
 gem 'sinatra', require: false # ダッシュボードを利用するため
 gem 'webpacker', '~> 5.x'
 gem "haml-rails"
+gem 'stripe'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
