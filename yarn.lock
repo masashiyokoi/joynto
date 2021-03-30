@@ -860,10 +860,10 @@
   resolved "https://registry.yarnpkg.com/@coreui/icons-pro/-/icons-pro-2.0.0-beta.5.tgz#46553e8cd1129b787042a4ecbe5a1c5bcdb0aaaa"
   integrity sha512-rtc7IqCWqXGGhI0qC4lArTAgKDg6/m+MZsAK+Wh9m552/bo4oh/fVfQOfis26PjX4GboLv7XS3V2GN7/zJtiZw==
 
-"@coreui/icons@^2.0.0-rc.0":
-  version "2.0.0-rc.0"
-  resolved "https://registry.yarnpkg.com/@coreui/icons/-/icons-2.0.0-rc.0.tgz#b61a503f2a98ea37054be4ab5157ac1aab77d128"
-  integrity sha512-Bg+uQKzEhERRZk1qo8tcR3bjJQDzv6+uDjt5IpjFwqnnnHE4gZE6adZ7jyMYQjgIlelEaS8ZOlE1M7aKHDWZSA==
+"@coreui/icons@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@coreui/icons/-/icons-2.0.1.tgz#778022fe2b366abf9594d142607026e4edc667f8"
+  integrity sha512-gBfFRLPUt3Bv9EZbJRbT3sQRHrhH0c4dRbeE9GpWJgJY8kvE9+3Hf5xGK9XyQhFynHx4o2WQeMxsReQLddlK9w==
 
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
