@@ -946,10 +946,10 @@
   resolved "https://registry.yarnpkg.com/@coreui/coreui/-/coreui-3.4.0.tgz#3e3627a1f48a00f6289204a23f71eaa6ea94e370"
   integrity sha512-WqzockdWVkXUNmNwlqdu+AxM+9JoiWGe4rKaySu/dZme1NvVOn2ukjJlpTkssal8UKcSHyitzNixtkMCmUxE1A==
 
-"@coreui/icons-pro@^2.0.0-beta.5":
-  version "2.0.0-beta.5"
-  resolved "https://registry.yarnpkg.com/@coreui/icons-pro/-/icons-pro-2.0.0-beta.5.tgz#46553e8cd1129b787042a4ecbe5a1c5bcdb0aaaa"
-  integrity sha512-rtc7IqCWqXGGhI0qC4lArTAgKDg6/m+MZsAK+Wh9m552/bo4oh/fVfQOfis26PjX4GboLv7XS3V2GN7/zJtiZw==
+"@coreui/icons-pro@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@coreui/icons-pro/-/icons-pro-2.0.1.tgz#4af084199ea11d576571c53bab567c7943085c47"
+  integrity sha512-CSPpBuQCuAdXLQm5BZMTNEVf5zPB/v/zKMKMDlLYhmyAemPsMt1HbKRVD93bWIfx06crfKWG5ExtZL2iNEM0Xg==
 
 "@coreui/icons@^2.0.1":
   version "2.0.1"
