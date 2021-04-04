@@ -43,7 +43,7 @@ gem 'activeadmin'
 
 gem 'acts_as_votable'
 gem 'public_activity'
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 gem 'bootstrap', '>= 4.3.1'
 gem 'jquery-rails'
 gem 'simple_calendar', '~> 2.0'
