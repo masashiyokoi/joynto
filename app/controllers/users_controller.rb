@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :check_current_user, only: [:edit, :update, :destroy]
 
   def index
-    @q = User.order(membership_type: :desc).ransack(params[:q])
+    @q = User.opponents(current_user).order(membership_type: :desc).ransack(params[:q])
     @users = @q.result.page(params[:page])
   end
 
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
   end
 
   def request_match
-    match = current_user.matches.create(match_type: 'match_message')
+    match = current_user.matches.create(match_type: 'direct_match')
     match.user_matches.create(user: @user)
     NotificationMailer.send_request_message_to_user(current_user, @user).deliver
 
@@ -71,7 +71,7 @@ class UsersController < ApplicationController
   def accept_match
     @match = current_user.matches.find(params[:match_id])
     raise 'asfasf' unless @match.users.include? @user
-    @match.update(match_status: :connected)
+    @match.update(match_status: :joynted)
     @match.notifications.create(target: @user)
     NotificationMailer.match_message_create(current_user, @user).deliver
   end

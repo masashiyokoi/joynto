@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  resources :announcements
   devise_for :users
   resources :users do
     member do
-      put 'request_match'    => 'users#request_match'
-      put 'accept_match'    => 'users#accept_match'
+      post 'request_match'    => 'users#request_match'
+      post 'accept_match'    => 'users#accept_match'
       put 'read_notification'    => 'users#read_notification'
       put 'stop_following'  => 'users#stop_following'
     end
@@ -31,7 +32,9 @@ Rails.application.routes.draw do
   end
   resources :notifications
   root 'home#index'
-  get 'mypages/index'
+  get 'mypages'    => 'mypages#index'
   get 'mypages/show'
   get 'mypages/payment'
+
+  resources :charges
 end

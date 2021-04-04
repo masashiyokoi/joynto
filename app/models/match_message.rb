@@ -17,7 +17,7 @@ class MatchMessage < ApplicationRecord
   end
 
   def other_users
-    return unless match.direct_match?
+    return unless match.chat_room?
     match.users.where.not(id: user.id)
   end
 
