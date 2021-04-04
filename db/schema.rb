@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_30_122124) do
+ActiveRecord::Schema.define(version: 2021_03_04_074853) do
 
   create_table "activities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.string "trackable_type"
@@ -37,6 +37,16 @@ ActiveRecord::Schema.define(version: 2020_09_30_122124) do
     t.string "link", limit: 1000
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "announcements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.integer "kind"
+    t.boolean "draft"
+    t.datetime "published_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "match_messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
@@ -91,12 +101,6 @@ ActiveRecord::Schema.define(version: 2020_09_30_122124) do
     t.index ["reset_password_token"], name: "index_sponsors_on_reset_password_token", unique: true
   end
 
-  create_table "tests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
-    t.string "aaa"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "times_messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.integer "user_id"
     t.text "content"
@@ -146,6 +150,8 @@ ActiveRecord::Schema.define(version: 2020_09_30_122124) do
     t.bigint "invited_by_id"
     t.integer "invitations_count", default: 0
     t.integer "membership_type", default: 0, null: false
+    t.integer "next_membership_type"
+    t.integer "mode", default: 0, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true

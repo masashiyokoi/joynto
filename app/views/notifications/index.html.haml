@@ -1,0 +1,25 @@
+%h1 Listing notifications
+
+%table
+  %thead
+    %tr
+      %th Published at
+      %th Published at
+      %th Published at
+      %th
+      %th
+      %th
+
+  %tbody
+    - @notifications.each do |notification|
+      %tr
+        %td= notification.created_at
+        %td= notification.notifiable.model_name
+        %td= notification.target.model_name
+        %td= link_to 'Show', notification
+        %td= link_to 'Edit', edit_notification_path(notification)
+        %td= link_to 'Destroy', notification, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Announcement', new_notification_path
