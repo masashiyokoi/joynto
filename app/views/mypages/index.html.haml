@@ -1,2 +1,7 @@
 %h1 Pages#index
 %p Find me in app/views/pages/index.html.erb
+= image_tag current_user.image.square.url, class: 'rounded' if current_user.image.present?
+%li.nav-item
+  = link_to 'mypage edit', edit_user_path(current_user), class: "nav-link"
+%li.nav-item
+  = link_to 'payment', mypages_payment_path, class: "nav-link"

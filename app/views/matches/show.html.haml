@@ -1,3 +1,5 @@
+= link_to 'new', new_match_match_message_path(match_id: @match.id)
+= link_to 'new warrant', new_match_warrant_path(match_id: @match.id) if @match.warrant?
 - @match_messages.each do |message|
   .row
     - if message.image.present? || message.video.present?
@@ -18,8 +20,6 @@
         = link_to user_path(message.user) do
           = image_tag message.user.image.square.url, class: "profile-img rounded" if message.user.image.present?
   %hr/
-= link_to 'new', new_match_match_message_path(match_id: @match.id)
-= link_to 'new warrant', new_match_warrant_path(match_id: @match.id) if @match.warrant_match?
 %i.fas.fa-bolt.fa-lg{"data-target" => "#exampleModal1", "data-toggle" => "modal", :href => "#exampleModal1", :style => "cursor: pointer;"}
 / Modal
 #exampleModal1.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}

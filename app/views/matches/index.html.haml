@@ -4,6 +4,10 @@
   = link_to match_path(match) do
     = current_user.direct_match_user(match).name
     - if current_user.direct_match_user(match).request_matches? current_user
+      = form_with(url: accept_match_user_path(current_user.direct_match_user(match), match_id: match.id), local: true) do |form|
+        .actions
+          = form.submit class: "btn btn-dark"
+
       = link_to accept_match_user_path(current_user.direct_match_user(match), match_id: match.id), method: :put do
         %i.far.fa-plus-square accept_match
     - if match.has_message_notification?(current_user)

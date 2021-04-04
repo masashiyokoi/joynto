@@ -6,8 +6,8 @@
   - unless current_user?(@user)
     - if current_user.request_matches? @user
       %i requesting now
-    - elsif !current_user.matched? @user
-      = link_to request_match_user_path(@user), method: :put do
+    - elsif !current_user.warrant_matched_user? @user
+      = link_to request_match_user_path(@user), method: :post do
         %i.far.fa-plus-square request_match
 %hr/
 %p= @user.profile

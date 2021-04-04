@@ -6,7 +6,7 @@ class UserMatch < ApplicationRecord
   validates :match_id, uniqueness: { scope: :user_id }
   validates :user_id, uniqueness: { scope: :match_id }
 
-  enum process_type: { request: 1, accept: 2 }
+  enum role: { resident: 0, room_keeper: 1, box_master: 2 }# TODO: change column to role
 
   private
 

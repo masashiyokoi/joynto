@@ -11,9 +11,9 @@
       = link_to message do
         = truncate(message.content, length: 100)
     .col-12.message-content
-      %p
+      %div{class: 'c-avatar'}
         = link_to user_path(message.user) do
-          = image_tag message.user.image.square.url, class: "profile-img rounded" if message.user.image.present?
+          = image_tag message.user.image.square.url, class: "c-avatar-img" if message.user.image.present?
       %label
         = render 'times_messages/vote', message: message
         = link_to message do

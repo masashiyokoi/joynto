@@ -1,3 +1,4 @@
+= image_tag current_user.image.square.url, class: 'rounded' if current_user.image.present?
 %li.nav-item
   = link_to 'mypage edit', edit_user_path(current_user), class: "nav-link"
 %li.nav-item
