@@ -936,10 +936,10 @@
   dependencies:
     chart.js "^2.8.0"
 
-"@coreui/coreui-pro@^3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@coreui/coreui-pro/-/coreui-pro-3.4.0.tgz#790e5dcc157a51d1e28dbe5c254dc7f194e2192c"
-  integrity sha512-1/pcdFZByOQ2N722KaPv56J9vLIGv7jqGV2XY9sLtXtxmOL7X74MNAXFUAKeG/u+IMV1wq85VEdRqEygdYLazQ==
+"@coreui/coreui-pro@^3.4.1":
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/@coreui/coreui-pro/-/coreui-pro-3.4.1.tgz#7538acd614774a716c3c8bb7f1b369ff342675a6"
+  integrity sha512-dNPGDvyjNip4WGfnWOGMF6YOVbb2X3/oTdzxIw6sXweyXCQn+CxSo+pfza8V2neYq3/f6XIxfC1D7t+ARr2b6w==
 
 "@coreui/coreui@^3.4.0":
   version "3.4.0"
@@ -983,15 +983,15 @@
   dependencies:
     mkdirp "^1.0.4"
 
-"@popperjs/core@^2.9.2":
-  version "2.9.2"
-  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.9.2.tgz#adea7b6953cbb34651766b0548468e743c6a2353"
-  integrity sha512-VZMYa7+fXHdwIq1TDhSXoVmSPEGM/aa+6Aiq3nVVJ9bXr24zScr+NlKFKC3iPljA7ho/GAZr+d2jOf5GIRC30Q==
-
 "@popperjs/core@^2.6.0":
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.6.0.tgz#f022195afdfc942e088ee2101285a1d31c7d727f"
   integrity sha512-cPqjjzuFWNK3BSKLm0abspP0sp/IGOli4p5I5fKFAzdS8fvjdOwDCfZqAaIiXd9lPkOWi3SUUfZof3hEb7J/uw==
+
+"@popperjs/core@^2.9.2":
+  version "2.9.2"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.9.2.tgz#adea7b6953cbb34651766b0548468e743c6a2353"
+  integrity sha512-VZMYa7+fXHdwIq1TDhSXoVmSPEGM/aa+6Aiq3nVVJ9bXr24zScr+NlKFKC3iPljA7ho/GAZr+d2jOf5GIRC30Q==
 
 "@rails/webpacker@5.2.1":
   version "5.2.1"
